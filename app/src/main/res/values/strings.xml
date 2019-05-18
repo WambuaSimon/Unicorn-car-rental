@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Unicorn</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_bookings">Bookings</string>
+    <string name="number_prompt">0</string>
+    <string-array name="number_arrays">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>More than 7</item>
+
+    </string-array>
+
+    <string name="drive_prompt">0</string>
+    <string-array name="drive_arrays">
+        <item>Self Drive</item>
+        <item>Chauffeur</item>
+    </string-array>
+</resources>
