@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
                     val fragment = HomeFragment.Companion.newInstance()
                     addFragment(fragment)
 
+
+
                     return true
                 }
                 R.id.navigation_profile -> {

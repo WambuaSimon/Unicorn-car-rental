@@ -13,33 +13,27 @@
             android:orientation="vertical"
             android:layout_height="match_parent"
             tools:context=".ui.activities.Activity_CarDetails">
-        <android.support.design.widget.AppBarLayout
-                android:id="@+id/appBarLayout"
+
+        <androidx.appcompat.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                android:background="@color/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <androidx.appcompat.widget.Toolbar
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/toolbar"
+            <TextView
+                    android:id="@+id/car_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:minHeight="?attr/actionBarSize"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-                <TextView
-                        android:id="@+id/car_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:text="Toyota Landcruiser Prado"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/_18sdp"/>
-            </androidx.appcompat.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Toyota Landcruiser Prado"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_18sdp"/>
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.cardview.widget.CardView
                 android:layout_margin="@dimen/_5sdp"
@@ -199,7 +193,7 @@
                 android:padding="@dimen/_5sdp"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp">
+                android:layout_height="wrap_content">
 
             <LinearLayout
                     android:orientation="vertical"
@@ -217,19 +211,75 @@
                 />
 
 
+                <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                >
+
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip6"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Leather Seats"/>
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip7"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Music System"/>
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip8"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Automatic drive"/>
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip9"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cruise control"/>
+
+                    <com.google.android.material.chip.Chip
+                            android:id="@+id/chip10"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Heads-up display"/>
+
+
+                </com.google.android.material.chip.ChipGroup>
+
+
             </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>
 
-        <Button android:layout_width="wrap_content"
-                android:text="Book"
-                android:textAllCaps="false"
-                android:gravity="center"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:background="@color/colorAccent"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"/>
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/book"
+                    android:backgroundTint="@color/book"
+                    android:layout_alignParentEnd="true"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:text="Book"/>
+        </RelativeLayout>
 
 
     </LinearLayout>

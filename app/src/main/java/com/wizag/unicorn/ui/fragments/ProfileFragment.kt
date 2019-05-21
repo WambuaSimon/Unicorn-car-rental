@@ -1,13 +1,14 @@
 package com.wizag.unicorn.ui.fragments
 
-import androidx.lifecycle.ViewModelProviders
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.profile.*
 
-import com.wizag.unicorn.R
 
 class ProfileFragment : Fragment() {
 
@@ -21,7 +22,16 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.profile_fragment, container, false)
+        val view = inflater.inflate(com.wizag.unicorn.R.layout.profile_fragment, container, false)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            photoHeader.setTranslationZ(6.0F);
+            /* Redraw the view to show the translation */
+            photoHeader.invalidate();
+
+        }
+        return inflater.inflate(com.wizag.unicorn.R.layout.profile_fragment, container, false)c
+
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,3 +41,5 @@ class ProfileFragment : Fragment() {
     }
 
 }
+
+

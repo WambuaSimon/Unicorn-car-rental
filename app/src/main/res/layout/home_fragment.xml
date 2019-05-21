@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true">
+
+
+<LinearLayout android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android">
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -23,7 +33,7 @@
         <EditText android:layout_width="match_parent"
                   android:id="@+id/location"
                   android:hint="Select Booking Location"
-                  android:textColorHint="@color/black"
+
                   android:inputType="textCapSentences"
                   android:padding="@dimen/_5sdp"
                   android:drawableEnd="@drawable/location_drawable"
@@ -49,7 +59,7 @@
                       android:id="@+id/start_date"
                       android:hint="Start Date"
                       android:layout_marginEnd="@dimen/_5sdp"
-                      android:textColorHint="@color/black"
+
                       android:padding="@dimen/_5sdp"
                       android:drawableEnd="@drawable/date_drawable"
                       android:drawableTint="@color/colorAccent"
@@ -62,7 +72,7 @@
                       android:id="@+id/start_time"
                       android:hint="Start Time"
                       android:layout_marginStart="@dimen/_5sdp"
-                      android:textColorHint="@color/black"
+
                       android:padding="@dimen/_5sdp"
                       android:drawableEnd="@drawable/time_drawable"
                       android:drawableTint="@color/colorAccent"
@@ -90,7 +100,7 @@
                       android:id="@+id/end_date"
                       android:hint="End Date"
                       android:layout_marginEnd="@dimen/_5sdp"
-                      android:textColorHint="@color/black"
+
                       android:padding="@dimen/_5sdp"
                       android:drawableEnd="@drawable/date_drawable"
                       android:drawableTint="@color/colorAccent"
@@ -103,7 +113,7 @@
                       android:id="@+id/end_time"
                       android:hint="End Time"
                       android:layout_marginStart="@dimen/_5sdp"
-                      android:textColorHint="@color/black"
+
                       android:padding="@dimen/_5sdp"
                       android:drawableEnd="@drawable/time_drawable"
                       android:drawableTint="@color/colorAccent"
@@ -145,16 +155,22 @@
                 android:textColor="#000000"
                 android:textSize="20sp"/>
 
-        <Button android:layout_width="match_parent"
-                android:background="@color/colorAccent"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Find your ride"
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/find_car"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
                 android:textAllCaps="false"
-                android:drawableTint="@color/white"
-                android:drawableEnd="@drawable/search_drawable"
-                android:textSize="@dimen/_18sdp"
+                android:padding="@dimen/_7sdp"
+                android:textSize="22sp"
                 android:textColor="@color/white"
-                android:layout_height="@dimen/_40sdp"/>
+                android:layout_height="wrap_content"
+                app:icon="@drawable/search_drawable"
+                app:iconSize="@dimen/_30sdp"
+                android:text="Find your ride "/>
+
 
     </LinearLayout>
 </FrameLayout>
+
+</LinearLayout>
+</ScrollView>

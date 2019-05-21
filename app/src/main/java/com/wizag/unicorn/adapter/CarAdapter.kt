@@ -65,7 +65,7 @@ class CarAdapter(val list: ArrayList<Car>) : RecyclerView.Adapter<CarAdapter.Vie
                 intent.putExtra("daily", data.daily)
                 intent.putExtra("weekly", data.weekly)
                 intent.putExtra("monthly", data.monthly)
-                intent.putExtra("car_image",car_image)
+//                intent.putExtra("car_image",car_image)
                 view.context.startActivity(intent)
 
 

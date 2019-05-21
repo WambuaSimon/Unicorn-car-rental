@@ -8,6 +8,6 @@ class Activity_Test : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.cars_layout)
+        setContentView(R.layout.activity_test)
     }
 }
