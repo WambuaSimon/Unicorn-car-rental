@@ -45,4 +45,6 @@ dependencies {
     implementation 'io.github.ivanespitiac:imageslider:1.0.2'
     implementation 'de.hdodenhof:circleimageview:2.0.0'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.0.0'
+    implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:3.4.0'
+    implementation "org.jetbrains.anko:anko:$anko_version"
 }

@@ -6,18 +6,17 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civProfilePic"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
             android:src="@drawable/fielder"
             app:civ_border_color="#ffffff"
             app:civ_border_width="3dp" />
 
-    <TextView
+    <ImageView
+            android:visibility="gone"
             android:id="@+id/tvLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2nd"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif-condensed"
+            android:src="@android:drawable/ic_menu_edit"
             android:layout_gravity="bottom|end" />
 </FrameLayout>

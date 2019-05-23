@@ -4,16 +4,31 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:background="@drawable/home_background">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:clickable="true"
-            android:background="@drawable/ic_arrow_back_white_36dp"/>
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                       android:id="@+id/toolbar"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:background="@color/colorPrimary"
+                                       android:minHeight="?attr/actionBarSize"
+                                       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Profile"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_18sdp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+   
 
     <include layout="@layout/profile"/>
 
