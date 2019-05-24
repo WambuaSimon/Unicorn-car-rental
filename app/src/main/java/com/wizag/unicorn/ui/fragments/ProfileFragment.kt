@@ -63,12 +63,12 @@ class ProfileFragment : Fragment() {
         }
 
 //        tool bar
-        viewOfLayout.toolbar.setNavigationIcon(R.drawable.back)
-        viewOfLayout.toolbar.setNavigationOnClickListener {
-
-            activity?.onBackPressed()
-
-        }
+//        viewOfLayout.toolbar.setNavigationIcon(R.drawable.back)
+//        viewOfLayout.toolbar.setNavigationOnClickListener {
+//
+//            activity?.onBackPressed()
+//
+//        }
 
 
         return viewOfLayout
