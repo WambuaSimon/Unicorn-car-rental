@@ -4,40 +4,40 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragments.BookingsFragment">
+        tools:context=".ui.fragments.HomeFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
 
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent">
+                  <!--android:orientation="vertical"-->
+                  <!--android:layout_width="match_parent"-->
+                  <!--android:layout_height="match_parent">-->
 
-        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-                                           xmlns:app="http://schemas.android.com/apk/res-auto"
-                                           android:id="@+id/toolbar"
-                                           android:layout_width="match_parent"
-                                           android:layout_height="wrap_content"
-                                           android:background="@color/colorPrimary"
-                                           android:minHeight="?attr/actionBarSize"
-                                           app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                           app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!--<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+                                           <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                                           <!--android:id="@+id/toolbar"-->
+                                           <!--android:layout_width="match_parent"-->
+                                           <!--android:layout_height="wrap_content"-->
+                                           <!--android:background="@color/colorPrimary"-->
+                                           <!--android:minHeight="?attr/actionBarSize"-->
+                                           <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+                                           <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
 
-            <TextView
+            <!--<TextView-->
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="Bookings History"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_18sdp"/>
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center_horizontal|center_vertical"-->
+                    <!--android:text="Bookings History"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textSize="@dimen/_18sdp"/>-->
 
-        </androidx.appcompat.widget.Toolbar>
+        <!--</androidx.appcompat.widget.Toolbar>-->
 
         <androidx.recyclerview.widget.RecyclerView
                 android:padding="@dimen/_10sdp"
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-    </LinearLayout>
+
 
 </FrameLayout>

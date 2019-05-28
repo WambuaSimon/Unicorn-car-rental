@@ -9,8 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.Activity_Bookings">
-
+        <activity android:name=".ui.activities.Activity_Signup">
         </activity>
         <activity android:name=".ui.activities.Activity_Login">
             <intent-filter>

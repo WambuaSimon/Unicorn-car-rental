@@ -32,7 +32,7 @@ class BookingsFragment : Fragment() {
     ): View? {
 
 
-        viewOfLayout = inflater.inflate(R.layout.bookings_layout, container, false)
+        viewOfLayout = inflater.inflate(R.layout.bookings_fragment, container, false)
 
         return viewOfLayout
 

@@ -20,16 +20,16 @@ class Activity_CarDetails : AppCompatActivity() {
         val byteArray = intent.getByteArrayExtra("car_image")
 //        val carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 
-        car_name.text = carName
+//        car_name.text = carName
         daily.text = dailyRate
         weekly.text = weeklyRate
         monthly.text = monthlyRate
 //        car_image.setImageBitmap(carImage)
 
-        if(carName.equals("Toyota Fielder")){
-            car_image.setImageResource(R.drawable.fielder)
-        }
-        else if(carName.equals("7 Seater Van (Chauffeur)")){
+//        if(carName.equals("Toyota Fielder")){
+//            car_image.setImageResource(R.drawable.fielder)
+//        }
+         if(carName.equals("7 Seater Van (Chauffeur)")){
             car_image.setImageResource(R.drawable.alphard)
         }
         else if(carName.equals("Safari Landcruiser (Chauffeur)")){

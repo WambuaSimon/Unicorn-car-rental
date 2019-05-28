@@ -1,35 +1,43 @@
-<LinearLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_background">
+        tools:context=".ui.fragments.HomeFragment">
 
-    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-                                       xmlns:app="http://schemas.android.com/apk/res-auto"
-                                       android:id="@+id/toolbar"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:background="@color/colorPrimary"
-                                       android:minHeight="?attr/actionBarSize"
-                                       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <TextView
+            android:background="@drawable/home_background">
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Profile"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_18sdp"/>
+        <!--<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+        <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
 
-    </androidx.appcompat.widget.Toolbar>
+        <!--<TextView-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center_horizontal|center_vertical"-->
+        <!--android:text="Profile"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="@dimen/_18sdp"/>-->
+
+        <!--</androidx.appcompat.widget.Toolbar>-->
 
 
-   
+        <include layout="@layout/profile"/>
 
-    <include layout="@layout/profile"/>
+    </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

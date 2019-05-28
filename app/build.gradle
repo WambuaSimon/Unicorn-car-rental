@@ -48,4 +48,6 @@ dependencies {
     implementation 'com.github.zawadz88.materialpopupmenu:material-popup-menu:3.4.0'
     implementation "org.jetbrains.anko:anko:$anko_version"
     implementation 'com.shaishavgandhi:login-buttons:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
 }

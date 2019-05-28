@@ -11,10 +11,18 @@ class Activity_Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        (this as AppCompatActivity).supportActionBar?.hide()
         setContentView(R.layout.activity_login)
 
         login.setOnClickListener {
             startActivity(intentFor<MainActivity>().singleTop())
+
         }
+        signup.setOnClickListener {
+            startActivity(intentFor<Activity_Signup>().singleTop())
+
+        }
+
     }
 }
