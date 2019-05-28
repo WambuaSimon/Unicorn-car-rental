@@ -19,11 +19,17 @@
     />
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/navigation"
+         android:backgroundTint="@color/colorAccent"
+            app:morphCornerRadius="128dp"
+            app:morphItemRadius="64dp"
+            app:elevation="0dp"
+            app:morphVerticalOffset="@dimen/_10sdp"
+            style="@style/BottomNavigationView"
     />
 
 
