@@ -1,6 +1,4 @@
 package com.wizag.unicorn.adapter
-
-
 import android.content.Intent
 import android.graphics.Bitmap
 import android.view.LayoutInflater
@@ -14,15 +12,15 @@ import com.wizag.unicorn.ui.activities.Activity_CarDetails
 import java.io.ByteArrayOutputStream
 
 
-class CarAdapter(val list: ArrayList<Car>) : RecyclerView.Adapter<CarAdapter.ViewHolder>() {
+class CarGridAdapter(val list: ArrayList<Car>) : RecyclerView.Adapter<CarGridAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(com.wizag.unicorn.R.layout.cars_layout, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarGridAdapter.ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(com.wizag.unicorn.R.layout.featured_grid_car_layout, parent, false)
         return ViewHolder(v)
     }
 
     //this method is binding the data on the list
-    override fun onBindViewHolder(holder: CarAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CarGridAdapter.ViewHolder, position: Int) {
         holder.bindItems(list[position])
     }
 
@@ -34,16 +32,12 @@ class CarAdapter(val list: ArrayList<Car>) : RecyclerView.Adapter<CarAdapter.Vie
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val view = view
         fun bindItems(data: Car) {
-            val daily: TextView = itemView.findViewById(com.wizag.unicorn.R.id.daily_rate)
-            val weekly: TextView = itemView.findViewById(com.wizag.unicorn.R.id.weekly_rate)
-            val monthly: TextView = itemView.findViewById(com.wizag.unicorn.R.id.monthly_rate)
-            val car_name: TextView = itemView.findViewById(com.wizag.unicorn.R.id.car_name)
-            val car: ImageView = itemView.findViewById(com.wizag.unicorn.R.id.car)
+            val amount: TextView = itemView.findViewById(com.wizag.unicorn.R.id.amount_featured)
+            val car_name: TextView = itemView.findViewById(com.wizag.unicorn.R.id.car_name_featured)
+            val car: ImageView = itemView.findViewById(com.wizag.unicorn.R.id.car_image_featured)
 
 
-            daily.text = data.daily
-            weekly.text = data.weekly
-            monthly.text = data.monthly
+            amount.text = data.daily
             car_name.text = data.car_name
             car.setImageBitmap(data.image)
 
@@ -59,8 +53,7 @@ class CarAdapter(val list: ArrayList<Car>) : RecyclerView.Adapter<CarAdapter.Vie
                 val intent = Intent(view.context, Activity_CarDetails::class.java)
                 intent.putExtra("car_name", data.car_name)
                 intent.putExtra("daily", data.daily)
-                intent.putExtra("weekly", data.weekly)
-                intent.putExtra("monthly", data.monthly)
+
 //                intent.putExtra("car_image",car_image)
                 view.context.startActivity(intent)
 

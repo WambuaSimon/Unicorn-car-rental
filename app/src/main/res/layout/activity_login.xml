@@ -79,11 +79,9 @@
             android:layout_width="65dp"
             app:roundedCorner="true"
             app:iconSize="20dp"
-
             app:roundedCornerRadius="75dp"
             android:id="@+id/google_login"
             android:layout_height="65dp"
-
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/textView4" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
@@ -92,7 +90,7 @@
             app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:text="Or"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +103,7 @@
             android:id="@+id/divider"
             android:layout_width="@dimen/_120sdp"
             android:layout_height="1dp"
-            android:background="@color/white"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/login"/>
@@ -114,7 +112,7 @@
             android:id="@+id/divider2"
             android:layout_width="@dimen/_120sdp"
             android:layout_height="1dp"
-            android:background="@color/white"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="20dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/textView2"
@@ -123,7 +121,7 @@
             android:text="Sign in with"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:gravity="center"
             android:textSize="18sp"
             android:id="@+id/textView4" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"

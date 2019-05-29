@@ -8,5 +8,7 @@ data class Car(
     var weekly: String,
     var monthly: String,
     var image: Bitmap
+
+
 )
 

@@ -6,13 +6,31 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
-    <include
-            android:id="@+id/photoHeader"
-            layout="@layout/photo_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_anchor="@id/relativeLayout"
-            app:layout_anchorGravity="top|center"/>
+    <!--<include-->
+            <!--android:id="@+id/photoHeader"-->
+            <!--layout="@layout/photo_header"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_anchor="@id/relativeLayout"-->
+            <!--app:layout_anchorGravity="top|center"/>-->
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <LinearLayout
             android:id="@+id/relativeLayout"
@@ -20,11 +38,10 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_height="wrap_content"
-
             android:background="@color/white"
             android:layout_marginTop="@dimen/_50sdp"
             android:orientation="vertical"
-            android:elevation="2dp">
+            android:elevation="4dp">
 
 
         <TextView
@@ -48,24 +65,34 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:weightSum="1"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
+            <EditText
                     android:id="@+id/edit_profile"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
+                    android:padding="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:focusable="false"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rounded_edittext"
                     android:layout_height="wrap_content"
                     android:text="Edit Profile"/>
 
 
-            <com.google.android.material.button.MaterialButton
+            <EditText
                     android:id="@+id/upload_docs"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="0dp"
+                    android:gravity="center"
+                    android:focusable="false"
                     android:layout_weight="0.5"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="@drawable/rounded_edittext"
                     android:layout_height="wrap_content"
                     android:text="Upload Docs"/>
 
@@ -101,14 +128,13 @@
         </LinearLayout>
 
 
-
         <include
                 android:layout_marginTop="@dimen/_30sdp"
                 android:id="@+id/docs_layout"
                 layout="@layout/docs_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               />
+        />
 
 
     </LinearLayout>

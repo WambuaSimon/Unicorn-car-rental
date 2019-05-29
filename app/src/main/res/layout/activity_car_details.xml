@@ -14,26 +14,6 @@
             android:layout_height="match_parent"
             tools:context=".ui.activities.Activity_CarDetails">
 
-        <!--<androidx.appcompat.widget.Toolbar-->
-                <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-                <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-                <!--android:id="@+id/toolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:minHeight="?attr/actionBarSize"-->
-                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-                <!--app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-            <!--<TextView-->
-                    <!--android:id="@+id/car_name"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:gravity="center_horizontal|center_vertical"-->
-                    <!--android:text="Toyota Landcruiser Prado"-->
-                    <!--android:textColor="@android:color/white"-->
-                    <!--android:textSize="@dimen/_18sdp"/>-->
-        <!--</androidx.appcompat.widget.Toolbar>-->
 
         <androidx.cardview.widget.CardView
                 android:layout_margin="@dimen/_5sdp"
@@ -108,6 +88,7 @@
 
 
         <androidx.cardview.widget.CardView
+                android:id="@+id/month_weekly"
                 android:padding="@dimen/_5sdp"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_width="match_parent"
