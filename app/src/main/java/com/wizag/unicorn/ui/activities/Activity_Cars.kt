@@ -21,6 +21,7 @@ class Activity_Cars : AppCompatActivity() {
 
         val cars = ArrayList<Car>()
 
+
         //adding some dummy data to the list
         cars.add(Car("Toyota Fielder","Kshs 4,640","Kshs 29,232","Kshs 104,400",BitmapFactory.decodeResource(resources, R.drawable.fielder)))
         cars.add(Car("7 Seater Van (Chauffeur)","Kshs 12,760","Kshs 80,040","Kshs 220,400",BitmapFactory.decodeResource(resources, R.drawable.alphard)))

@@ -22,7 +22,7 @@ class Activity_CarDetails : AppCompatActivity() {
             weeklyRate = intent.getStringExtra("weekly")
             monthlyRate = intent.getStringExtra("monthly")
         }
-        val byteArray = intent.getByteArrayExtra("car_image")
+//        val byteArray = intent.getByteArrayExtra("car_image")
 //        val carImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 
 //        car_name.text = carName
