@@ -1,6 +1,7 @@
 package com.wizag.unicorn.ui.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,7 +56,29 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
                 VehicleModel vehicleModel = vehicleModelList.get(position);
 
-                Toast.makeText(Activity_Featured_Vehicles.this, vehicleModel.getDailyPricing(), Toast.LENGTH_SHORT).show();
+                String carMake = vehicleModel.getCarMake();
+                String carImage = vehicleModel.getCarImage();
+                String carModel = vehicleModel.getCarModel();
+                String dailyPricing = vehicleModel.getDailyPricing();
+                String fuelType = vehicleModel.getFuelType();
+                String transmission = vehicleModel.getTransmission();
+                String bodyDesign = vehicleModel.getBodyDesign();
+                String weeklyPricing = vehicleModel.getWeeklyPricing();
+                String monthlyPricing = vehicleModel.getMonthlyPricing();
+                String car_name = carMake +" "+ carModel;
+
+                Intent intent = new Intent(getApplicationContext(), Activity_CarDetails.class);
+
+                intent.putExtra("carImage", carImage);
+                intent.putExtra("carName", car_name);
+                intent.putExtra("dailyPricing", dailyPricing);
+                intent.putExtra("fuelType", fuelType);
+                intent.putExtra("transmission", transmission);
+                intent.putExtra("bodyDesign", bodyDesign);
+                intent.putExtra("weeklyPricing", weeklyPricing);
+                intent.putExtra("monthlyPricing", monthlyPricing);
+                startActivity(intent);
+
             }
         });
 
@@ -105,9 +128,7 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
                                     if (pricing_rate_id.equalsIgnoreCase("1")) {
                                         vehicleModel.setDailyPricing(price);
-                                    }
-
-                                    else if (pricing_rate_id.equalsIgnoreCase("2")) {
+                                    } else if (pricing_rate_id.equalsIgnoreCase("2")) {
                                         vehicleModel.setWeeklyPricing(price);
                                     }
 
@@ -118,7 +139,6 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                                 vehicleModel.setCarModel(model);
                                 vehicleModel.setCarImage(image);
 //                                vehicleModel.setDailyPricing(price);
-
 
 
 //
