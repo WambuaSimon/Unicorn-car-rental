@@ -65,7 +65,7 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                 String bodyDesign = vehicleModel.getBodyDesign();
                 String weeklyPricing = vehicleModel.getWeeklyPricing();
                 String monthlyPricing = vehicleModel.getMonthlyPricing();
-                String car_name = carMake +" "+ carModel;
+                String car_name = carMake + " " + carModel;
 
                 Intent intent = new Intent(getApplicationContext(), Activity_CarDetails.class);
 
@@ -90,7 +90,8 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
     void getVehiclesData() {
         com.android.volley.RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         final ProgressDialog pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Loading...");
+        pDialog.setMessage("Loading your rides...");
+        pDialog.setCancelable(false);
         pDialog.show();
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, vehicles_url,
@@ -121,6 +122,16 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
                                 JSONArray pricings = vehicles_object.getJSONArray("pricings");
 
+                                JSONObject fuel_type_object = vehicles_object.getJSONObject("fuel_type");
+                                String fuel = fuel_type_object.getString("name");
+
+                                JSONObject transmission_object = vehicles_object.getJSONObject("transmission");
+                                String transmission = transmission_object.getString("name");
+
+                                JSONObject car_body_design_object = vehicles_object.getJSONObject("car_body_design");
+                                String body_design = car_body_design_object.getString("body_design");
+
+
                                 for (int m = 0; m < pricings.length(); m++) {
                                     JSONObject pricings_object = pricings.getJSONObject(m);
                                     price = pricings_object.getString("price");
@@ -138,13 +149,9 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                                 vehicleModel.setCarMake(make);
                                 vehicleModel.setCarModel(model);
                                 vehicleModel.setCarImage(image);
-//                                vehicleModel.setDailyPricing(price);
-
-
-//
-//                                else if (pricing_rate_id.equalsIgnoreCase("3")) {
-//                                    vehicleModel.setMonthlyPricing(price);
-//                                }
+                                vehicleModel.setFuelType(fuel);
+                                vehicleModel.setTransmission(transmission);
+                                vehicleModel.setBodyDesign(body_design);
 
 
                                 if (vehicleModelList.contains(car_type_id)) {
