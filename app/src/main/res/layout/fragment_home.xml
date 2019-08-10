@@ -143,13 +143,6 @@
                         app:iconSize="@dimen/_30sdp"
                         android:text="Find your ride "/>
 
-                <Button android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Click"
-                        android:id="@+id/click"
-                        android:onClick="Click"
-                />
-
 
             </LinearLayout>
         </FrameLayout>

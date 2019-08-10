@@ -9,4 +9,6 @@
     <color name="image_background">#778899</color>
     <color name="icon_color">#111820</color>
     <color name="feature_bg">#49b567</color>
+    <color name="bookings_color">#263241</color>
+
 </resources>

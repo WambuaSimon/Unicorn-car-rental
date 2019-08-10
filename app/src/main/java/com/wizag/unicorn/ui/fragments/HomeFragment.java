@@ -30,7 +30,7 @@ import java.util.Calendar;
 
 public class HomeFragment extends Fragment {
     Button find_car;
-    Button click;
+
     Spinner pick_up, drop_off;
     View view;
     ArrayList<String> Locations;
@@ -73,7 +73,6 @@ public class HomeFragment extends Fragment {
         pick_time = view.findViewById(R.id.pick_time);
         drop_time = view.findViewById(R.id.drop_time);
 
-        click = view.findViewById(R.id.click);
 
         pick_date.setOnClickListener(new View.OnClickListener() {
             @Override
