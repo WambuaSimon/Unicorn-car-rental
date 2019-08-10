@@ -1,10 +1,8 @@
 package com.wizag.unicorn.ui.activities;
 
+
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
 import com.wizag.unicorn.R;
-import com.wizag.unicorn.adapter.VehicleAdapter;
+import com.wizag.unicorn.adapter.CarAdapter;
 import com.wizag.unicorn.model.VehicleModel;
 import com.wizag.unicorn.network.ApiClient;
 import com.wizag.unicorn.network.ApiInterface;
@@ -30,9 +28,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Activity_Featured_Vehicles extends AppCompatActivity {
+public class Activity_Car extends AppCompatActivity {
     RecyclerView recyclerView;
-    VehicleAdapter vehicleAdapter;
+    CarAdapter carAdapter;
     ApiInterface apiInterface;
     List<VehicleModel> vehicleModelList;
     String vehicles_url = "https://unicorn.wizag.co.ke/api/get-vehicles";
@@ -42,13 +40,7 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_featured_vehicles);
-        Toolbar myToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        setContentView(R.layout.activity_car);
 
         initializeViews();
         getVehiclesData();
@@ -58,14 +50,16 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
     void initializeViews() {
 
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         recyclerView = findViewById(R.id.vehicles_recyclerview);
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         vehicleModelList = new ArrayList<>();
-        vehicleAdapter = new VehicleAdapter(vehicleModelList, this, new VehicleAdapter.VehicleAdapterListener() {
+        carAdapter = new CarAdapter(vehicleModelList, this, new CarAdapter.CarAdapterListener() {
             @Override
             public void fabOnClick(View v, int position) {
 
@@ -97,8 +91,8 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
             }
         });
 
-        recyclerView.setAdapter(vehicleAdapter);
-        vehicleAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(carAdapter);
+        carAdapter.notifyDataSetChanged();
 
     }
 
@@ -183,7 +177,7 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                             e.printStackTrace();
                             e.getMessage();
                         }
-                        vehicleAdapter.notifyDataSetChanged();
+                        carAdapter.notifyDataSetChanged();
 
                         //Toast.makeText(Activity_Show_Tasks.this, "", Toast.LENGTH_SHORT).show();
                     }
@@ -202,25 +196,6 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_car, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.search:
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }
 

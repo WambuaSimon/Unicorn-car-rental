@@ -1,5 +1,6 @@
 package com.wizag.unicorn.adapter;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,31 +15,35 @@ import com.wizag.unicorn.model.VehicleModel;
 
 import java.util.List;
 
-public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHolder> {
+public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
 
     private List<VehicleModel> vehicleData;
     Context context;
-    public VehicleAdapterListener onClickListener;
+    public CarAdapterListener onClickListener;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView car_name_featured;
-        TextView daily_amount_featured;
+        TextView car_name;
+        TextView daily_rate;
         CardView card;
-        ImageView car_image_featured;
+        ImageView car_image;
+        TextView weekly_rate;
+        TextView monthly_rate;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.car_name_featured = itemView.findViewById(R.id.car_name_featured);
-            this.daily_amount_featured = itemView.findViewById(R.id.daily_amount_featured);
-            this.car_image_featured = itemView.findViewById(R.id.car_image_featured);
+            this.car_name = itemView.findViewById(R.id.car_name);
+            this.daily_rate = itemView.findViewById(R.id.daily_rate);
+            this.car_image = itemView.findViewById(R.id.car_image);
             this.card = itemView.findViewById(R.id.card);
+            this.weekly_rate = itemView.findViewById(R.id.weekly_rate);
+            this.monthly_rate = itemView.findViewById(R.id.monthly_rate);
 
 
         }
     }
 
-    public VehicleAdapter(List<VehicleModel> data, Context context, VehicleAdapterListener listener) {
+    public CarAdapter(List<VehicleModel> data, Context context, CarAdapterListener listener) {
         this.vehicleData = data;
         this.context = context;
         this.onClickListener = listener;
@@ -48,22 +53,26 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.featured_grid_car_layout, parent, false);
+                .inflate(R.layout.cars_layout, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int listPosition) {
-        final TextView car_name = holder.car_name_featured;
-        TextView daily_amount = holder.daily_amount_featured;
-        ImageView car_image_featured = holder.car_image_featured;
+        final TextView car_name = holder.car_name;
+        TextView daily_amount = holder.daily_rate;
+        ImageView car_image = holder.car_image;
         CardView card = holder.card;
+        TextView weekly_rate = holder.weekly_rate;
+        TextView monthly_rate = holder.monthly_rate;
 
         car_name.setText(vehicleData.get(listPosition).getCarMake() + " " + vehicleData.get(listPosition).getCarModel());
         daily_amount.setText("Ksh " +vehicleData.get(listPosition).getDailyPricing());
+        weekly_rate.setText(vehicleData.get(listPosition).getWeeklyPricing());
+        monthly_rate.setText(vehicleData.get(listPosition).getMonthlyPricing());
 
-        Glide.with(context).load("https://unicorn.wizag.co.ke/cartypes/"+vehicleData.get(listPosition).getCarImage()).into(car_image_featured);
+        Glide.with(context).load("https://unicorn.wizag.co.ke/cartypes/"+vehicleData.get(listPosition).getCarImage()).into(car_image);
 
         card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +92,8 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         return vehicleData.size();
     }
 
-    public interface VehicleAdapterListener {
+
+    public interface CarAdapterListener {
 
         void fabOnClick(View v, int position);
 

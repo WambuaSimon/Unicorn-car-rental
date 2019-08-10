@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:fillViewport="true">
+
 
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,6 +14,26 @@
             android:orientation="vertical"
             android:layout_height="match_parent"
             tools:context=".ui.activities.Activity_CarDetails">
+
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                           xmlns:app="http://schemas.android.com/apk/res-auto"
+                                           android:id="@+id/toolbar"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:background="@color/colorPrimary"
+                                           android:minHeight="?attr/actionBarSize"
+                                           app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                           app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:id="@+id/car_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_18sdp"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <androidx.cardview.widget.CardView
@@ -24,7 +45,7 @@
 
             <ImageView
                     android:id="@+id/car_image"
-                    android:src="@drawable/prado"
+                    app:srcCompat="@drawable/prado"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_200sdp"/>
 
@@ -73,6 +94,7 @@
                             android:id="@+id/daily"
                             android:layout_weight="0.6"
                             android:textSize="18sp"
+
                             android:textColor="@color/black"
                             android:text="Ksh 4,600"
                             android:layout_width="0dp"
@@ -88,6 +110,7 @@
 
 
         <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:id="@+id/month_weekly"
                 android:padding="@dimen/_5sdp"
                 android:layout_margin="@dimen/_5sdp"
@@ -95,6 +118,7 @@
                 android:layout_height="wrap_content">
 
             <LinearLayout
+
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -246,6 +270,108 @@
 
 
         </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:padding="@dimen/_5sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <LinearLayout
+
+                    android:orientation="vertical"
+
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <LinearLayout
+
+                        android:orientation="horizontal"
+
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:tint="@color/icon_color"
+                            android:src="@drawable/trans"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                    />
+
+
+                    <TextView
+                            android:id="@+id/transmission"
+                            android:layout_gravity="center"
+
+                            android:textColor="@color/white"
+                            android:text="Manual"
+                            android:padding="@dimen/_3sdp"
+                            android:background="@drawable/rounded_feature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                    />
+
+                    <ImageView
+                            android:tint="@color/icon_color"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:src="@drawable/fuel"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                    />
+
+                    <TextView
+                            android:id="@+id/fuel_type"
+
+                            android:textColor="@color/white"
+                            android:text="Petrol"
+                            android:padding="@dimen/_3sdp"
+                            android:background="@drawable/rounded_feature"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                    />
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                        android:orientation="horizontal"
+
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:tint="@color/icon_color"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:src="@drawable/body"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                    />
+
+                    <TextView
+                            android:id="@+id/body"
+                            android:padding="@dimen/_3sdp"
+                            android:background="@drawable/rounded_feature"
+
+                            android:textColor="@color/white"
+                            android:text="CrossOver"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                    />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"
@@ -258,8 +384,8 @@
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="@dimen/_150sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:text="Book"/>
+                    android:layout_height="@dimen/_70sdp"
+                    android:text="Reserve"/>
         </RelativeLayout>
 
 

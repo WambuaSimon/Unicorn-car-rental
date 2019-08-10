@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.activities.Activity_Featured_Vehicles">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                       android:id="@+id/toolbar"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:background="@color/colorPrimary"
+                                       android:minHeight="?attr/actionBarSize"
+                                       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                       app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Featured Rides"
+                android:gravity="center_horizontal|center_vertical"
+                android:id="@+id/car_name"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_18sdp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/vehicles_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

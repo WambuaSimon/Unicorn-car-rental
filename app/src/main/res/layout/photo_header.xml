@@ -18,7 +18,7 @@
             android:elevation="8dp"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
-            android:src="@drawable/unicorn_logo"
+            app:srcCompat="@drawable/unicorn_logo"
             android:layout_gravity="bottom|end" />
 
 

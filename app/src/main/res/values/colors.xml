@@ -7,4 +7,6 @@
     <color name="black">#000</color>
     <color name="book">#2196f3</color>
     <color name="image_background">#778899</color>
+    <color name="icon_color">#111820</color>
+    <color name="feature_bg">#49b567</color>
 </resources>

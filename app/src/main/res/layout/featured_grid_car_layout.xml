@@ -1,46 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
 
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                        xmlns:app="http://schemas.android.com/apk/res-auto"
                                        xmlns:tools="http://schemas.android.com/tools"
                                        android:padding="@dimen/_7sdp"
+                                       android:id="@+id/card"
                                        android:layout_margin="@dimen/_3sdp"
                                        android:layout_width="@dimen/_150sdp"
-                                       android:layout_height="@dimen/_180sdp">
+                                       android:layout_height="wrap_content">
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       android:orientation="vertical"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent">
 
-            <ImageView
-                    android:layout_gravity="center"
-                    android:id="@+id/car_image_featured"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
-                    android:src="@drawable/fielder"
-            />
 
-
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="match_parent"
                       android:text="Fielder"
+                      android:gravity="center"
+                      android:background="@color/colorPrimary"
                       android:id="@+id/car_name_featured"
                       android:layout_marginStart="@dimen/_3sdp"
                       android:textSize="@dimen/_15sdp"
-                      android:textColor="@color/colorAccent"
+                      android:textColor="@color/white"
                       android:layout_height="wrap_content"/>
 
-            <TextView android:layout_width="wrap_content"
-                      android:text="Ksh 4700"
-                      android:id="@+id/amount_featured"
-                      android:layout_marginStart="@dimen/_3sdp"
-                      android:textSize="@dimen/_15sdp"
-                      android:textColor="@color/colorAccent"
-                      android:layout_height="wrap_content"/>
+            <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/car_image_featured"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    app:srcCompat="@drawable/fielder"
+            />
+
+
+
+
+                <TextView
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:text="Daily Rate: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView3"
+                        android:textColor="@color/black"/>
+                <TextView
+                        android:layout_gravity="center"
+                        android:text=" Kshs 4,640"
+                        android:textSize="20sp"
+                        android:background="@color/feature_bg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/_4sdp"
+                        android:id="@+id/daily_amount_featured"
+                />
+
+
+            <!--<TextView android:layout_width="wrap_content"-->
+                      <!--android:text="Ksh 4700"-->
+                      <!--android:id="@+id/daily_amount_featured"-->
+                      <!--android:layout_marginStart="@dimen/_3sdp"-->
+                      <!--android:textSize="@dimen/_15sdp"-->
+                      <!--android:textColor="@color/colorAccent"-->
+                      <!--android:layout_height="wrap_content"/>-->
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

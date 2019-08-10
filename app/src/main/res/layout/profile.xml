@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,13 +18,15 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
+
+
     <!--<include-->
-            <!--android:id="@+id/photoHeader"-->
-            <!--layout="@layout/photo_header"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_anchor="@id/relativeLayout"-->
-            <!--app:layout_anchorGravity="top|center"/>-->
+    <!--android:id="@+id/photoHeader"-->
+    <!--layout="@layout/photo_header"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:layout_anchor="@id/relativeLayout"-->
+    <!--app:layout_anchorGravity="top|center"/>-->
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -26,6 +40,15 @@
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <TextView android:layout_width="match_parent"
+                      android:text="Profile"
+                      android:textColor="@color/white"
+                      android:textSize="25sp"
+                      android:gravity="center"
+                      android:layout_marginTop="@dimen/_7sdp"
+                      android:layout_height="wrap_content"/>
+
+
         </androidx.appcompat.widget.Toolbar>
 
 
@@ -37,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_height="wrap_content"
+            android:layout_height="135dp"
             android:background="@color/white"
             android:layout_marginTop="@dimen/_50sdp"
             android:orientation="vertical"
@@ -50,7 +73,7 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:id="@+id/name"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
         />
@@ -62,82 +85,176 @@
                   android:textColor="@color/black"
                   android:layout_height="wrap_content"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:weightSum="1"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-            <EditText
-                    android:id="@+id/edit_profile"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:padding="@dimen/_5sdp"
-                    android:gravity="center"
-                    android:focusable="false"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/rounded_edittext"
-                    android:layout_height="wrap_content"
-                    android:text="Edit Profile"/>
+        <EditText android:layout_width="wrap_content"
+                  android:text="+254714234567"
+                  android:gravity="center"
+                  android:id="@+id/phone"
+                  android:padding="@dimen/_7sdp"
+                  android:textSize="18sp"
+                  android:layout_marginTop="@dimen/_5sdp"
+                  android:layout_gravity="center"
+                  android:background="@drawable/edittext_background"
+                  android:textColor="@color/black"
+                  android:layout_height="wrap_content"/>
 
 
-            <EditText
-                    android:id="@+id/upload_docs"
-                    android:layout_width="0dp"
-                    android:gravity="center"
-                    android:focusable="false"
-                    android:layout_weight="0.5"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:background="@drawable/rounded_edittext"
-                    android:layout_height="wrap_content"
-                    android:text="Upload Docs"/>
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:weightSum="1"-->
+        <!--android:layout_marginTop="@dimen/_15sdp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<EditText-->
+        <!--android:id="@+id/edit_profile"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:padding="@dimen/_5sdp"-->
+        <!--android:gravity="center"-->
+        <!--android:focusable="false"-->
+        <!--android:layout_margin="@dimen/_5sdp"-->
+        <!--android:background="@drawable/rounded_edittext"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Edit Profile"/>-->
 
 
-        </LinearLayout>
+        <!--<EditText-->
+        <!--android:id="@+id/upload_docs"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:gravity="center"-->
+        <!--android:focusable="false"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:layout_margin="@dimen/_5sdp"-->
+        <!--android:padding="@dimen/_5sdp"-->
+        <!--android:layout_marginStart="@dimen/_5sdp"-->
+        <!--android:background="@drawable/rounded_edittext"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Upload Docs"/>-->
 
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:weightSum="1"
-                android:gravity="center"
-
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content">
-
-            <ImageButton
-                    android:layout_gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.1"
-                    android:tint="@color/colorAccent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/exit_drawable"
-                    android:background="?attr/selectableItemBackgroundBorderless"/>
-
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/logout"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:text="Logout"/>
-
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
 
-        <include
-                android:layout_marginTop="@dimen/_30sdp"
-                android:id="@+id/docs_layout"
-                layout="@layout/docs_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-        />
+        <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:weightSum="1"-->
+                <!--android:gravity="center"-->
 
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageButton-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.1"-->
+                    <!--android:tint="@color/colorAccent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:srcCompat="@drawable/exit_drawable"-->
+                    <!--android:background="?attr/selectableItemBackgroundBorderless"/>-->
+
+            <!--<com.google.android.material.button.MaterialButton-->
+                    <!--android:id="@+id/logout"-->
+                    <!--style="@style/Widget.MaterialComponents.Button.TextButton"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Logout"/>-->
+
+        <!--</LinearLayout>-->
+
+
+
+
+        <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_height="wrap_content">-->
+
+
+            <!--<include-->
+                    <!--android:layout_marginTop="@dimen/_30sdp"-->
+                    <!--android:id="@+id/docs_layout"-->
+                    <!--layout="@layout/docs_layout"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+            <!--/>-->
+
+        <!--</LinearLayout>-->
 
     </LinearLayout>
 
 
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/license_card"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:cardElevation="@dimen/_4sdp"
+            android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_margin="@dimen/_7sdp"
+                      android:layout_height="match_parent">
+
+
+            <TextView android:layout_width="match_parent"
+                      android:text="Address"
+                      android:textColor="@color/black"
+                      android:textSize="20sp"
+                      android:layout_height="wrap_content"/>
+
+            <EditText android:layout_width="match_parent"
+                      android:id="@+id/pickup"
+                      android:hint="1234 Main Street"
+                      android:inputType="textCapSentences"
+                      android:padding="@dimen/_5sdp"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="45dp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:text="City/State"
+                      android:textColor="@color/black"
+                      android:textSize="20sp"
+                      android:layout_marginTop="@dimen/_7sdp"
+                      android:layout_height="wrap_content"/>
+
+            <EditText android:layout_width="match_parent"
+                      android:id="@+id/city"
+                      android:hint="Nairobi"
+                      android:inputType="textCapSentences"
+                      android:padding="@dimen/_5sdp"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="45dp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:text="Country"
+                      android:textColor="@color/black"
+                      android:textSize="20sp"
+                      android:layout_marginTop="@dimen/_7sdp"
+                      android:layout_height="wrap_content"/>
+
+            <EditText android:layout_width="match_parent"
+                      android:id="@+id/country"
+                      android:hint="Kenya"
+                      android:inputType="textCapSentences"
+                      android:padding="@dimen/_5sdp"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="45dp"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+</ScrollView>

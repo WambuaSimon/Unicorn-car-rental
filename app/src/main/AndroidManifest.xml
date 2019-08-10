@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.wizag.unicorn">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.Activity_Vehicles">
+        <activity android:name=".ui.activities.Activity_Registration">
+        </activity>
+        <activity android:name=".ui.activities.Activity_Car">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.activities.Activity_CarDetails"/>
+        </activity>
+        <activity android:name=".ui.activities.Activity_Featured_Vehicles">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,7 +29,6 @@
         <activity android:name=".ui.activities.Activity_Signup">
         </activity>
         <activity android:name=".ui.activities.Activity_Login">
-
         </activity>
         <activity
                 android:name=".ui.activities.Activity_CarDetails"
@@ -29,13 +38,6 @@
                     android:value=".ui.activities.Activity_CarDetails"/>
         </activity>
         <activity android:name=".ui.activities.Activity_Test">
-        </activity>
-        <activity
-                android:name=".ui.activities.Activity_Cars"
-                android:windowSoftInputMode="stateAlwaysHidden">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ui.activities.Activity_Cars"/>
         </activity>
         <activity
                 android:name=".ui.activities.MainActivity"

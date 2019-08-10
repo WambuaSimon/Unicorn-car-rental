@@ -42,7 +42,7 @@ class Activity_CarDetails : AppCompatActivity() {
             }
 
 
-            daily.text = dailyRate
+            daily.text = "Ksh "+dailyRate
             weekly.text = weeklyRate
             monthly.text = monthlyRate
             car_name.text = carName
