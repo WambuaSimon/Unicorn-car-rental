@@ -1,6 +1,7 @@
 package com.wizag.unicorn.ui.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.wizag.unicorn.R;
 import com.wizag.unicorn.adapter.BookingsAdapter;
 import com.wizag.unicorn.model.BookingsModel;
+import com.wizag.unicorn.ui.activities.Activity_BookingDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +54,15 @@ public class BookingsFragment extends Fragment {
         mAdapter = new BookingsAdapter(bookingsModelsList, getActivity(), new BookingsAdapter.BookingsAdapterListener() {
             @Override
             public void cardOnClick(View v, int position) {
+                Intent intent = new Intent(getActivity(), Activity_BookingDetails.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
 
             }
         });
         recyclerView.setAdapter(mAdapter);
+
+
 
     }
 

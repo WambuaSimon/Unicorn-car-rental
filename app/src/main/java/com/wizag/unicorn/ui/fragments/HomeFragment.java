@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     Button find_car;
@@ -54,14 +57,7 @@ public class HomeFragment extends Fragment {
 
     void init() {
         find_car = view.findViewById(R.id.find_car);
-        find_car.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), Activity_Car.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+
         Locations = new ArrayList<>();
 
         pick_up = view.findViewById(R.id.pick_up);
@@ -111,7 +107,46 @@ public class HomeFragment extends Fragment {
             getLocation();
         }
 
+        find_car.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                /*validation*/
+                if(pick_up.getSelectedItem().toString() ==null || drop_off.getSelectedItem().toString() ==null){
+
+                    Toasty.warning(getActivity(),"Select Drop off and Pick up locations",Toasty.LENGTH_SHORT,true).show();
+                }
+                else if(pick_date.getText().toString().isEmpty() || drop_date.getText().toString().isEmpty() ){
+                    Toasty.warning(getActivity(),"Select respective dates",Toasty.LENGTH_SHORT,true).show();
+
+                }
+
+                else if(pick_time.getText().toString().isEmpty() || drop_time.getText().toString().isEmpty() ){
+                    Toasty.warning(getActivity(),"Select respective times",Toasty.LENGTH_SHORT,true).show();
+
+                }else {
+
+
+                    /*store stuff in shared prefs*/
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("search_car", MODE_PRIVATE).edit();
+                    editor.putString("pick_up_location", pick_up.getSelectedItem().toString());
+                    editor.putString("drop_off_location", drop_off.getSelectedItem().toString());
+
+                    editor.putString("pick_up_date", pick_date.getText().toString());
+                    editor.putString("drop_off_date", drop_date.getText().toString());
+
+                    editor.putString("pick_up_time", pick_time.getText().toString());
+                    editor.putString("drop_off_time", drop_time.getText().toString());
+                    editor.apply();
+
+
+                    Intent intent = new Intent(view.getContext(), Activity_Car.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                }
+            }
+        });
     }
 
     private boolean isNetworkConnected() {

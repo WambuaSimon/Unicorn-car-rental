@@ -1,5 +1,6 @@
 package com.wizag.unicorn.ui.activities
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -50,6 +51,13 @@ class Activity_CarDetails : AppCompatActivity() {
             transmission.text = transmission_type
             fuel_type.text = fueltype
         }
+
+        book.setOnClickListener {
+            val intent = Intent(this, Activity_Reserve::class.java)
+            startActivity(intent)
+
+        }
+
 
     }
 }

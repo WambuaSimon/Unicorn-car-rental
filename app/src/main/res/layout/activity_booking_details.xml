@@ -1,10 +1,323 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.activities.Activity_BookingDetails">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  tools:context=".ui.activities.Activity_CartDetails">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Bookings Details"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                           xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_alignParentBottom="true"
+                                           android:layout_centerHorizontal="true"
+                                           android:layout_marginStart="@dimen/_5sdp"
+                                           android:layout_marginTop="@dimen/_5sdp"
+                                           android:layout_marginEnd="@dimen/_5sdp"
+                                           android:layout_marginBottom="@dimen/_7sdp"
+                                           app:cardCornerRadius="@dimen/_10sdp"
+                                           app:cardElevation="3dp">
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+
+                <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="TRIP DETAILS"
+                        android:textColor="@color/bookings_color"
+                        android:textSize="18sp" />
+
+
+                <TextView
+                        android:id="@+id/item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Toyota Fielder"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="Pick up Date: "
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                <TextView
+                        android:id="@+id/pick_up_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="2019-08-15   16:00:00"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+            </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Drop off Date: "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:id="@+id/drop_off_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="2019-08-15   16:00:00"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Pick up Location: "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:id="@+id/pick_up_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Westlands"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Drop off Location: "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:id="@+id/drop_off_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Nairobi CBD"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                           xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_alignParentBottom="true"
+                                           android:layout_centerHorizontal="true"
+                                           android:layout_marginStart="@dimen/_5sdp"
+                                           android:layout_marginTop="@dimen/_5sdp"
+                                           android:layout_marginEnd="@dimen/_5sdp"
+                                           android:layout_marginBottom="@dimen/_7sdp"
+                                           app:cardCornerRadius="@dimen/_10sdp"
+                                           app:cardElevation="3dp">
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="Cost Details"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:textColor="@color/bookings_color"
+                        android:textSize="18sp" />
+
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Number of Days:   "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:id="@+id/days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="4"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Cost per day:   "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:id="@+id/day_cost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Ksh.4500"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Total Cost:   "
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                    <TextView
+                            android:id="@+id/total_cost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_7sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Ksh.18,000"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <Button
+                android:id="@+id/checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:visibility="gone"
+                android:layout_margin="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@android:color/white"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="Place Order"
+                android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+
+

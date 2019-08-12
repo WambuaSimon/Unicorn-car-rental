@@ -12,7 +12,17 @@
             android:roundIcon="@drawable/unicorn_logo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ui.activities.Activity_Payment">
+        </activity>
+        <activity android:name=".ui.activities.Activity_Reserve">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.activities.Activity_Reserve"/>
+        </activity>
         <activity android:name=".ui.activities.Activity_BookingDetails">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.activities.Activity_BookingDetails"/>
         </activity>
         <activity android:name=".ui.activities.Activity_Login">
         </activity>

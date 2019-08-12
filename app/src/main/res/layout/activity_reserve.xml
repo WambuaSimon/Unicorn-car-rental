@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent" android:layout_width="match_parent"
+        android:fillViewport="true">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Checkout"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:padding="@dimen/_7sdp"
+                      android:layout_height="wrap_content">
+
+
+            <TextView
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pick-up Location"
+
+                    android:textSize="@dimen/_18sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_weight="0.5"
+                      android:id="@+id/pick_up"
+                      android:layout_marginEnd="@dimen/_5sdp"
+                      android:padding="@dimen/_5sdp"
+
+                          android:textSize="18sp"
+                      android:textColor="@android:color/black"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="@dimen/_45sdp"/>
+
+            <TextView
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drop-off Location"
+
+                    android:textSize="@dimen/_18sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_weight="0.5"
+                      android:id="@+id/drop_off"
+                      android:layout_marginEnd="@dimen/_5sdp"
+                      android:padding="@dimen/_5sdp"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/black"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="@dimen/_45sdp"/>
+
+
+            <TextView
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pick up Date"
+
+                    android:textSize="@dimen/_18sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:id="@+id/pick_date"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/black"
+                      android:padding="@dimen/_5sdp"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="@dimen/_45sdp"/>
+
+
+            <TextView
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pick up Time"
+
+                    android:textSize="@dimen/_18sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:id="@+id/pick_time"
+                      android:padding="@dimen/_5sdp"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/black"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="@dimen/_45sdp"/>
+
+
+            <TextView
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drop off Date"
+
+                    android:textSize="@dimen/_18sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:id="@+id/drop_date"
+                      android:padding="@dimen/_5sdp"
+                      android:textSize="18sp"
+
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="@dimen/_45sdp"/>
+
+            <TextView
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drop off Time"
+
+                    android:textSize="@dimen/_18sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:id="@+id/drop_time"
+                      android:padding="@dimen/_5sdp"
+                      android:textSize="18sp"
+                     android:textColor="@android:color/black"
+                      android:background="@drawable/edittext_background"
+                      android:layout_height="@dimen/_45sdp"/>
+
+            <CheckBox android:layout_width="wrap_content"
+                      android:id="@+id/driver"
+                      android:layout_marginTop="@dimen/_7sdp"
+                      android:text="I need a driver for this ride"
+                      android:textSize="18sp"
+                      android:layout_height="wrap_content"/>
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_height="wrap_content">
+
+                <CheckBox android:layout_width="wrap_content"
+                          android:id="@+id/terms"
+                          android:layout_marginTop="@dimen/_7sdp"
+                          android:text="I Agree to the "
+                          android:textSize="18sp"
+                          android:textColor="@color/black"
+                          android:layout_height="wrap_content"/>
+
+                <TextView android:layout_width="match_parent"
+                          android:text="Rental Terms"
+                          android:id="@+id/rental_terms"
+                          android:layout_marginTop="@dimen/_7sdp"
+                          android:gravity="center"
+                          android:textColor="@android:color/holo_blue_dark"
+                          android:textSize="18sp"
+                          android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pay"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:textAllCaps="false"
+                    android:padding="@dimen/_7sdp"
+                    android:textSize="18sp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="Checkout"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
