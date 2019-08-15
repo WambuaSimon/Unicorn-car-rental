@@ -75,6 +75,7 @@ public class Activity_Car extends AppCompatActivity {
                 String weeklyPricing = vehicleModel.getWeeklyPricing();
                 String monthlyPricing = vehicleModel.getMonthlyPricing();
                 String car_name = carMake + " " + carModel;
+                String driver_cost = vehicleModel.getDriver_cost();
 
                 Intent intent = new Intent(getApplicationContext(), Activity_CarDetails.class);
 
@@ -86,6 +87,11 @@ public class Activity_Car extends AppCompatActivity {
                 intent.putExtra("bodyDesign", bodyDesign);
                 intent.putExtra("weeklyPricing", weeklyPricing);
                 intent.putExtra("monthlyPricing", monthlyPricing);
+                intent.putExtra("driver_cost", driver_cost);
+                intent.putExtra("driver_cost", driver_cost);
+                intent.putExtra("parentName", "search");
+
+
                 startActivity(intent);
 
             }
@@ -112,13 +118,15 @@ public class Activity_Car extends AppCompatActivity {
 
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray vehicles_array = jsonObject.getJSONArray("carTypes");
+
                             for (int p = 0; p < vehicles_array.length(); p++) {
 
 
                                 JSONObject vehicles_object = vehicles_array.getJSONObject(p);
-                                String car_type_id = vehicles_object.getString("id");
-//                                vehicleModelList.clear();
+
                                 VehicleModel vehicleModel = new VehicleModel();
+                                String car_type_id = vehicles_object.getString("id");
+                                String driver_cost = vehicles_object.getString("driver_cost");
 
                                 JSONObject car_make_object = vehicles_object.getJSONObject("car_make");
                                 String make = car_make_object.getString("make");
@@ -161,6 +169,7 @@ public class Activity_Car extends AppCompatActivity {
                                 vehicleModel.setFuelType(fuel);
                                 vehicleModel.setTransmission(transmission);
                                 vehicleModel.setBodyDesign(body_design);
+                                vehicleModel.setDriver_cost(driver_cost);
 
 
                                 if (vehicleModelList.contains(car_type_id)) {

@@ -200,8 +200,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
             <LinearLayout
+
                     android:orientation="vertical"
+                    android:layout_margin="@dimen/_5sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -212,84 +215,14 @@
                         android:textColor="@color/white"
                         android:text="Features"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                />
+                        android:layout_height="40dp"/>
 
-
-                <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chipGroup"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                >
-
-
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip6"
-                            style="@style/Widget.MaterialComponents.Chip.Action"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Leather Seats"/>
-
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip7"
-                            style="@style/Widget.MaterialComponents.Chip.Action"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Music System"/>
-
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip8"
-                            style="@style/Widget.MaterialComponents.Chip.Action"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Automatic drive"/>
-
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip9"
-                            style="@style/Widget.MaterialComponents.Chip.Action"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cruise control"/>
-
-                    <com.google.android.material.chip.Chip
-                            android:id="@+id/chip10"
-                            style="@style/Widget.MaterialComponents.Chip.Action"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Heads-up display"/>
-
-
-                </com.google.android.material.chip.ChipGroup>
-
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-                android:padding="@dimen/_5sdp"
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-            <LinearLayout
-
-                    android:orientation="vertical"
-
-                    android:layout_margin="@dimen/_5sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
                 <LinearLayout
 
                         android:orientation="horizontal"
-
-                        android:layout_margin="@dimen/_5sdp"
+                        android:weightSum="1"
+                       android:layout_marginTop="@dimen/_5sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -298,6 +231,7 @@
                             android:src="@drawable/trans"
                             android:layout_marginStart="@dimen/_3sdp"
                             android:textSize="18sp"
+                            android:layout_weight="0.2"
                             android:textColor="@color/black"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_30sdp"
@@ -307,9 +241,10 @@
                     <TextView
                             android:id="@+id/transmission"
                             android:layout_gravity="center"
-
+                            android:layout_weight="0.3"
                             android:textColor="@color/white"
                             android:text="Manual"
+                            android:gravity="center"
                             android:padding="@dimen/_3sdp"
                             android:background="@drawable/rounded_feature"
                             android:layout_width="wrap_content"
@@ -318,20 +253,22 @@
 
                     <ImageView
                             android:tint="@color/icon_color"
-                            android:layout_marginStart="@dimen/_30sdp"
+
                             android:src="@drawable/fuel"
+                            android:layout_weight="0.2"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_30sdp"
                     />
 
                     <TextView
                             android:id="@+id/fuel_type"
-
+                            android:layout_weight="0.3"
+                            android:gravity="center"
                             android:textColor="@color/white"
                             android:text="Petrol"
                             android:padding="@dimen/_3sdp"
                             android:background="@drawable/rounded_feature"
-                            android:layout_marginStart="@dimen/_5sdp"
+
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -342,14 +279,14 @@
                 <LinearLayout
 
                         android:orientation="horizontal"
-
-                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:weightSum="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                     <ImageView
+                            android:layout_weight="0.2"
                             android:tint="@color/icon_color"
-                            android:layout_marginStart="@dimen/_3sdp"
                             android:src="@drawable/body"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_30sdp"
@@ -358,13 +295,36 @@
                     <TextView
                             android:id="@+id/body"
                             android:padding="@dimen/_3sdp"
+                            android:gravity="center"
                             android:background="@drawable/rounded_feature"
-
+                            android:layout_weight="0.3"
                             android:textColor="@color/white"
                             android:text="CrossOver"
-                            android:layout_marginStart="@dimen/_5sdp"
+
                             android:layout_gravity="center"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                    />
+
+                    <ImageView
+                            android:layout_weight="0.2"
+                            android:tint="@color/icon_color"
+                            android:src="@drawable/body"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                    />
+
+                    <TextView
+                            android:id="@+id/bags"
+                            android:padding="@dimen/_3sdp"
+                            android:gravity="center"
+                            android:background="@drawable/rounded_feature"
+                            android:layout_weight="0.3"
+                            android:textColor="@color/white"
+                            android:text="Bags"
+
+                            android:layout_gravity="center"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                     />
                 </LinearLayout>

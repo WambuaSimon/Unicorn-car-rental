@@ -52,10 +52,10 @@
                       android:layout_marginEnd="@dimen/_5sdp"
                       android:padding="@dimen/_5sdp"
 
-                          android:textSize="18sp"
+                      android:textSize="18sp"
                       android:textColor="@android:color/black"
                       android:background="@drawable/edittext_background"
-                      android:layout_height="@dimen/_45sdp"/>
+                      android:layout_height="wrap_content"/>
 
             <TextView
                     android:layout_marginTop="@dimen/_7sdp"
@@ -73,7 +73,7 @@
                       android:textSize="18sp"
                       android:textColor="@android:color/black"
                       android:background="@drawable/edittext_background"
-                      android:layout_height="@dimen/_45sdp"/>
+                      android:layout_height="wrap_content"/>
 
 
             <TextView
@@ -90,24 +90,24 @@
                       android:textColor="@android:color/black"
                       android:padding="@dimen/_5sdp"
                       android:background="@drawable/edittext_background"
-                      android:layout_height="@dimen/_45sdp"/>
+                      android:layout_height="wrap_content"/>
 
 
-            <TextView
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pick up Time"
+            <!--<TextView-->
+                    <!--android:layout_marginTop="@dimen/_7sdp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Pick up Time"-->
 
-                    android:textSize="@dimen/_18sdp"/>
+                    <!--android:textSize="@dimen/_18sdp"/>-->
 
-            <TextView android:layout_width="match_parent"
-                      android:id="@+id/pick_time"
-                      android:padding="@dimen/_5sdp"
-                      android:textSize="18sp"
-                      android:textColor="@android:color/black"
-                      android:background="@drawable/edittext_background"
-                      android:layout_height="@dimen/_45sdp"/>
+            <!--<TextView android:layout_width="match_parent"-->
+                      <!--android:id="@+id/pick_time"-->
+                      <!--android:padding="@dimen/_5sdp"-->
+                      <!--android:textSize="18sp"-->
+                      <!--android:textColor="@android:color/black"-->
+                      <!--android:background="@drawable/edittext_background"-->
+                      <!--android:layout_height="wrap_content"/>-->
 
 
             <TextView
@@ -122,25 +122,25 @@
                       android:id="@+id/drop_date"
                       android:padding="@dimen/_5sdp"
                       android:textSize="18sp"
-
+                      android:textColor="@android:color/black"
                       android:background="@drawable/edittext_background"
-                      android:layout_height="@dimen/_45sdp"/>
+                      android:layout_height="wrap_content"/>
 
-            <TextView
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Drop off Time"
+            <!--<TextView-->
+                    <!--android:layout_marginTop="@dimen/_7sdp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Drop off Time"-->
 
-                    android:textSize="@dimen/_18sdp"/>
+                    <!--android:textSize="@dimen/_18sdp"/>-->
 
-            <TextView android:layout_width="match_parent"
-                      android:id="@+id/drop_time"
-                      android:padding="@dimen/_5sdp"
-                      android:textSize="18sp"
-                     android:textColor="@android:color/black"
-                      android:background="@drawable/edittext_background"
-                      android:layout_height="@dimen/_45sdp"/>
+            <!--<TextView android:layout_width="match_parent"-->
+                      <!--android:id="@+id/drop_time"-->
+                      <!--android:padding="@dimen/_5sdp"-->
+                      <!--android:textSize="18sp"-->
+                      <!--android:textColor="@android:color/black"-->
+                      <!--android:background="@drawable/edittext_background"-->
+                      <!--android:layout_height="wrap_content"/>-->
 
             <CheckBox android:layout_width="wrap_content"
                       android:id="@+id/driver"
@@ -174,7 +174,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                    android:id="@+id/pay"
+                    android:id="@+id/make_reservation"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="match_parent"
                     android:textAllCaps="false"
@@ -183,7 +183,7 @@
                     android:layout_marginTop="@dimen/_7sdp"
                     android:textColor="@color/white"
                     android:layout_height="wrap_content"
-                    android:text="Checkout"/>
+                    android:text="Make Reservation"/>
 
 
         </LinearLayout>

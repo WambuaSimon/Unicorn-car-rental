@@ -10,6 +10,33 @@ public class VehicleModel {
     String dailyPricing;
     String weeklyPricing;
     String monthlyPricing;
+    String large_bags;
+    String small_bags;
+    String driver_cost;
+
+    public String getLarge_bags() {
+        return large_bags;
+    }
+
+    public void setLarge_bags(String large_bags) {
+        this.large_bags = large_bags;
+    }
+
+    public String getSmall_bags() {
+        return small_bags;
+    }
+
+    public void setSmall_bags(String small_bags) {
+        this.small_bags = small_bags;
+    }
+
+    public String getDriver_cost() {
+        return driver_cost;
+    }
+
+    public void setDriver_cost(String driver_cost) {
+        this.driver_cost = driver_cost;
+    }
 
     public String getCarMake() {
         return carMake;

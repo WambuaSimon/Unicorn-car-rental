@@ -39,15 +39,11 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
     String price;
     String pricing_rate_id;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_featured_vehicles);
-        Toolbar myToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(myToolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         initializeViews();
@@ -57,13 +53,15 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
     }
 
     void initializeViews() {
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         recyclerView = findViewById(R.id.vehicles_recyclerview);
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         vehicleModelList = new ArrayList<>();
         vehicleAdapter = new VehicleAdapter(vehicleModelList, this, new VehicleAdapter.VehicleAdapterListener() {
             @Override
@@ -81,6 +79,8 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                 String weeklyPricing = vehicleModel.getWeeklyPricing();
                 String monthlyPricing = vehicleModel.getMonthlyPricing();
                 String car_name = carMake + " " + carModel;
+                String driver_cost = vehicleModel.getDriver_cost();
+
 
                 Intent intent = new Intent(getApplicationContext(), Activity_CarDetails.class);
 
@@ -92,6 +92,9 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                 intent.putExtra("bodyDesign", bodyDesign);
                 intent.putExtra("weeklyPricing", weeklyPricing);
                 intent.putExtra("monthlyPricing", monthlyPricing);
+                intent.putExtra("driver_cost", driver_cost);
+
+                intent.putExtra("parentName", "featured");
                 startActivity(intent);
 
             }
@@ -122,9 +125,11 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
 
                                 JSONObject vehicles_object = vehicles_array.getJSONObject(p);
+                                VehicleModel vehicleModel = new VehicleModel();
+                                String driver_cost = vehicles_object.getString("driver_cost");
+
                                 String car_type_id = vehicles_object.getString("id");
 //                                vehicleModelList.clear();
-                                VehicleModel vehicleModel = new VehicleModel();
 
                                 JSONObject car_make_object = vehicles_object.getJSONObject("car_make");
                                 String make = car_make_object.getString("make");
@@ -167,6 +172,7 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                                 vehicleModel.setFuelType(fuel);
                                 vehicleModel.setTransmission(transmission);
                                 vehicleModel.setBodyDesign(body_design);
+                                vehicleModel.setDriver_cost(driver_cost);
 
 
                                 if (vehicleModelList.contains(car_type_id)) {

@@ -1,23 +1,19 @@
-package com.wizag.unicorn.ui.fragments;
+package com.wizag.unicorn.ui.activities;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wizag.unicorn.R;
-import com.wizag.unicorn.ui.activities.Activity_Car;
 import com.wizag.unicorn.utils.Constants;
 import com.wizag.unicorn.utils.MySingleton;
 import es.dmoral.toasty.Toasty;
@@ -29,71 +25,84 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import static android.content.Context.MODE_PRIVATE;
+public class Activity_Featured_Reserve extends AppCompatActivity {
 
-public class HomeFragment extends Fragment {
-    Button find_car;
+    /*featured stuff*/
+    Spinner featured_pick_up, featured_drop_off;
+    EditText featured_pick_date, featured_pick_time,
+            featured_drop_date, featured_drop_time;
 
-    Spinner pick_up, drop_off;
-    View view;
-    ArrayList<String> Locations;
-    EditText pick_date, drop_date;
-    EditText pick_time, drop_time;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
+    CheckBox featured_driver, featured_terms;
+    Button featured_reservation;
+    ArrayList<String> FeaturedLocations;
+    CheckBox terms, driver;
+    String needDriver;
+    String daily_rate, driverCost;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-        init();
-        return view;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity__featured__reserve);
 
+        initFeatured();
     }
 
-    void init() {
-        find_car = view.findViewById(R.id.find_car);
+    void initFeatured() {
 
-        Locations = new ArrayList<>();
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        pick_up = view.findViewById(R.id.pick_up);
-        drop_off = view.findViewById(R.id.drop_off);
-
-        pick_date = view.findViewById(R.id.pick_date);
-        drop_date = view.findViewById(R.id.drop_date);
-
-        pick_time = view.findViewById(R.id.pick_time);
-        drop_time = view.findViewById(R.id.drop_time);
+        FeaturedLocations = new ArrayList<>();
+        /*get ride cost*/
+        Intent intent = getIntent();
+        daily_rate = intent.getStringExtra("dailyRate");
+        driverCost = intent.getStringExtra("driver_cost");
 
 
-        pick_date.setOnClickListener(new View.OnClickListener() {
+        terms = findViewById(R.id.terms);
+        driver = findViewById(R.id.driver);
+
+        featured_pick_up = findViewById(R.id.featured_pick_up);
+        featured_drop_off = findViewById(R.id.featured_drop_off);
+
+        featured_pick_date = findViewById(R.id.featured_pick_date);
+        featured_pick_time = findViewById(R.id.featured_pick_time);
+
+        featured_drop_date = findViewById(R.id.featured_drop_date);
+        featured_drop_time = findViewById(R.id.featured_drop_time);
+
+        featured_driver = findViewById(R.id.featured_driver);
+        featured_terms = findViewById(R.id.featured_terms);
+        featured_reservation = findViewById(R.id.featured_reservation);
+
+
+        featured_pick_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 getPickUpDate();
+
+
             }
         });
 
-        drop_date.setOnClickListener(new View.OnClickListener() {
+        featured_drop_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getDropOffDate();
             }
         });
 
-
-        pick_time.setOnClickListener(new View.OnClickListener() {
+        featured_pick_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getPickupTime();
             }
         });
 
-
-        drop_time.setOnClickListener(new View.OnClickListener() {
+        featured_drop_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getDropOffTime();
@@ -101,62 +110,47 @@ public class HomeFragment extends Fragment {
         });
 
 
-        if (!isNetworkConnected()) {
-            Toasty.warning(getActivity(), "Ensure you have internet connection", Toasty.LENGTH_SHORT, true).show();
-        } else {
-            getLocation();
-        }
+        getLocation();
 
-        find_car.setOnClickListener(new View.OnClickListener() {
+        featured_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (terms.isChecked()) {
+                    if (driver.isChecked()) {
+                        needDriver = "1";
+                    } else if (!driver.isChecked()) {
+                        needDriver = "0";
+                    }
 
-                /*validation*/
-                if(pick_up.getSelectedItem().toString() == null || drop_off.getSelectedItem().toString() ==null){
-
-                    Toasty.warning(getActivity(),"Select Drop off and Pick up locations",Toasty.LENGTH_SHORT,true).show();
-                }
-                else if(pick_date.getText().toString().isEmpty() || drop_date.getText().toString().isEmpty() ){
-                    Toasty.warning(getActivity(),"Select respective dates",Toasty.LENGTH_SHORT,true).show();
-
-                }
-
-                else if(pick_time.getText().toString().isEmpty() || drop_time.getText().toString().isEmpty() ){
-                    Toasty.warning(getActivity(),"Select respective times",Toasty.LENGTH_SHORT,true).show();
-
-                }else {
 
                     /*store stuff in shared prefs*/
-                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("search_car", MODE_PRIVATE).edit();
-                    editor.putString("pick_up_location", pick_up.getSelectedItem().toString());
-                    editor.putString("drop_off_location", drop_off.getSelectedItem().toString());
+                    SharedPreferences.Editor editor = getSharedPreferences("search_car", MODE_PRIVATE).edit();
+                    editor.putString("pick_up_location", featured_pick_up.getSelectedItem().toString());
+                    editor.putString("drop_off_location", featured_drop_off.getSelectedItem().toString());
 
-                    editor.putString("pick_up_date", pick_date.getText().toString());
-                    editor.putString("drop_off_date", drop_date.getText().toString());
+                    editor.putString("pick_up_date", featured_pick_date.getText().toString());
+                    editor.putString("drop_off_date", featured_drop_date.getText().toString());
 
-                    editor.putString("pick_up_time", pick_time.getText().toString());
-                    editor.putString("drop_off_time", drop_time.getText().toString());
+                    editor.putString("pick_up_time", featured_pick_time.getText().toString());
+                    editor.putString("drop_off_time", featured_drop_time.getText().toString());
                     editor.apply();
 
-                    Intent intent = new Intent(view.getContext(), Activity_Car.class);
+                    Intent intent = new Intent(getApplicationContext(), Activity_Payment.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                    intent.putExtra("parentName","search");
                     startActivity(intent);
+                } else {
+                    Toasty.warning(getApplicationContext(), "Ensure you agree to the terms to proceed", Toasty.LENGTH_SHORT, true).show();
 
                 }
             }
         });
     }
 
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null;
-    }
 
     private void getLocation() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        final ProgressDialog pDialog = new ProgressDialog(this.getActivity());
+        RequestQueue requestQueue = Volley.newRequestQueue(Activity_Featured_Reserve.this);
+        final ProgressDialog pDialog = new ProgressDialog(Activity_Featured_Reserve.this);
         pDialog.setMessage("Getting Locations...");
         pDialog.setCancelable(false);
         pDialog.show();
@@ -173,18 +167,18 @@ public class HomeFragment extends Fragment {
                             JSONObject locationsObject = locations.getJSONObject(i);
                             String name = locationsObject.getString("name");
 
-                            if (Locations.contains(name)) {
+                            if (FeaturedLocations.contains(name)) {
 
                             } else {
-                                Locations.add(name);
+                                FeaturedLocations.add(name);
                             }
 
                         }
 
 
                     }
-                    drop_off.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Locations));
-                    pick_up.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Locations));
+                    featured_drop_off.setAdapter(new ArrayAdapter<String>(Activity_Featured_Reserve.this, android.R.layout.simple_spinner_dropdown_item, FeaturedLocations));
+                    featured_pick_up.setAdapter(new ArrayAdapter<String>(Activity_Featured_Reserve.this, android.R.layout.simple_spinner_dropdown_item, FeaturedLocations));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -196,25 +190,23 @@ public class HomeFragment extends Fragment {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 pDialog.dismiss();
-                Toasty.error(getActivity(), "An Error Occurred" + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toasty.error(Activity_Featured_Reserve.this, "An Error Occurred" + error.getMessage(), Toast.LENGTH_LONG).show();
 
             }
 
 
         });
 
-        MySingleton.getInstance(this.getActivity()).addToRequestQueue(stringRequest);
-
+        MySingleton.getInstance(Activity_Featured_Reserve.this).addToRequestQueue(stringRequest);
 
         int socketTimeout = 30000;
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(policy);
         requestQueue.add(stringRequest);
 
-
     }
 
-     void getPickUpDate() {
+    public void getPickUpDate() {
         final Calendar mcurrentDate = Calendar.getInstance();
 
         mcurrentDate.set(mcurrentDate.get(Calendar.YEAR), mcurrentDate.get(Calendar.MONTH), mcurrentDate.get(Calendar.DAY_OF_MONTH) + 2,
@@ -225,7 +217,7 @@ public class HomeFragment extends Fragment {
         int mMonth = mcurrentDate.get(Calendar.MONTH);
         int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog mDatePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog mDatePicker = new DatePickerDialog(Activity_Featured_Reserve.this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
                 // TODO Auto-generated method stub
                 /*      Your code   to get date and time    */
@@ -234,7 +226,7 @@ public class HomeFragment extends Fragment {
                 mcurrentDate.set(Calendar.DAY_OF_MONTH, selectedday);
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                pick_date.setText(sdf.format(mcurrentDate.getTime()));
+                featured_pick_date.setText(sdf.format(mcurrentDate.getTime()));
             }
         }, mYear, mMonth, mDay);
         mDatePicker.setTitle("Select date");
@@ -242,7 +234,7 @@ public class HomeFragment extends Fragment {
     }
 
 
-     void getDropOffDate() {
+    public void getDropOffDate() {
         final Calendar mcurrentDate = Calendar.getInstance();
 
         mcurrentDate.set(mcurrentDate.get(Calendar.YEAR), mcurrentDate.get(Calendar.MONTH), mcurrentDate.get(Calendar.DAY_OF_MONTH) + 2,
@@ -253,7 +245,7 @@ public class HomeFragment extends Fragment {
         int mMonth = mcurrentDate.get(Calendar.MONTH);
         int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog mDatePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog mDatePicker = new DatePickerDialog(Activity_Featured_Reserve.this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
 
                 mcurrentDate.set(Calendar.YEAR, selectedyear);
@@ -261,7 +253,7 @@ public class HomeFragment extends Fragment {
                 mcurrentDate.set(Calendar.DAY_OF_MONTH, selectedday);
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                drop_date.setText(sdf.format(mcurrentDate.getTime()));
+                featured_drop_date.setText(sdf.format(mcurrentDate.getTime()));
             }
         }, mYear, mMonth, mDay);
         mDatePicker.setTitle("Select date");
@@ -269,16 +261,16 @@ public class HomeFragment extends Fragment {
     }
 
 
-     void getPickupTime() {
+    public void getPickupTime() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
 
         TimePickerDialog mTimePicker;
-        mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+        mTimePicker = new TimePickerDialog(Activity_Featured_Reserve.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                pick_time.setText(selectedHour + ":" + selectedMinute);
+                featured_pick_time.setText(selectedHour + ":" + selectedMinute);
             }
         }, hour, minute, true);
         mTimePicker.setTitle("Select Time");
@@ -286,16 +278,16 @@ public class HomeFragment extends Fragment {
     }
 
 
-     void getDropOffTime() {
+    public void getDropOffTime() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
 
         TimePickerDialog mTimePicker;
-        mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+        mTimePicker = new TimePickerDialog(Activity_Featured_Reserve.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                drop_time.setText(selectedHour + ":" + selectedMinute);
+                featured_drop_time.setText(selectedHour + ":" + selectedMinute);
             }
         }, hour, minute, true);
         mTimePicker.setTitle("Select Time");
