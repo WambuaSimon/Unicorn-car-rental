@@ -18,6 +18,8 @@ public class Activity_CarDetails extends AppCompatActivity {
     Button book;
     String driver_cost;
     String parentName;
+    TextView bags;
+    String small_bags, large_bags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class Activity_CarDetails extends AppCompatActivity {
         fuel_type = findViewById(R.id.fuel_type);
         carType_image = findViewById(R.id.car_image);
         book = findViewById(R.id.book);
+        bags = findViewById(R.id.bags);
 
 
         /*get from intent*/
@@ -53,21 +56,24 @@ public class Activity_CarDetails extends AppCompatActivity {
             dailyRate = intent.getStringExtra("dailyPricing");
             driver_cost = intent.getStringExtra("driver_cost");
             parentName = intent.getStringExtra("parentName");
+            large_bags = intent.getStringExtra("large_bags");
+            small_bags = intent.getStringExtra("small_bags");
 
         }
 
-        daily.setText("Ksh."+dailyRate);
+        daily.setText("Ksh." + dailyRate);
         car_name.setText(carName);
         body.setText(bodyDesign);
         transmission.setText(transmission_type);
         fuel_type.setText(fuelType);
+        bags.setText(large_bags+" Large bag(s)" +"\n" + small_bags+" Small bag(s)");
 
         Glide.with(getApplicationContext()).load(carImage).into(carType_image);
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(parentName.equalsIgnoreCase("search")){
+                if (parentName.equalsIgnoreCase("search")) {
                     Intent intent = new Intent(getApplicationContext(), Activity_Reserve.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("dailyRate", dailyRate);
@@ -75,7 +81,7 @@ public class Activity_CarDetails extends AppCompatActivity {
 
                     startActivity(intent);
 
-                } else if(parentName.equalsIgnoreCase("featured")){
+                } else if (parentName.equalsIgnoreCase("featured")) {
                     Intent intent = new Intent(getApplicationContext(), Activity_Featured_Reserve.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("dailyRate", dailyRate);

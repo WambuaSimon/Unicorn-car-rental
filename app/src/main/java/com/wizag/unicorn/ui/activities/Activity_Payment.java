@@ -71,7 +71,7 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
             driver.setVisibility(View.GONE);
         } else if (needDriver.equalsIgnoreCase("1")) {
             driver.setVisibility(View.VISIBLE);
-            driver_cost.setText(driverCost);
+            driver_cost.setText("Ksh."+driverCost);
         }
 
         ride_cost.setText("Ksh." + daily_rate);

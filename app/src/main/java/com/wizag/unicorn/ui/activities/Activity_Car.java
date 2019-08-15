@@ -77,6 +77,10 @@ public class Activity_Car extends AppCompatActivity {
                 String car_name = carMake + " " + carModel;
                 String driver_cost = vehicleModel.getDriver_cost();
 
+                String large_bags = vehicleModel.getLarge_bags();
+                String small_bags = vehicleModel.getSmall_bags();
+
+
                 Intent intent = new Intent(getApplicationContext(), Activity_CarDetails.class);
 
                 intent.putExtra("carImage", carImage);
@@ -90,7 +94,8 @@ public class Activity_Car extends AppCompatActivity {
                 intent.putExtra("driver_cost", driver_cost);
                 intent.putExtra("driver_cost", driver_cost);
                 intent.putExtra("parentName", "search");
-
+                intent.putExtra("large_bags", large_bags);
+                intent.putExtra("small_bags", small_bags);
 
                 startActivity(intent);
 
@@ -127,6 +132,8 @@ public class Activity_Car extends AppCompatActivity {
                                 VehicleModel vehicleModel = new VehicleModel();
                                 String car_type_id = vehicles_object.getString("id");
                                 String driver_cost = vehicles_object.getString("driver_cost");
+                                String large_bags = vehicles_object.getString("large_bags");
+                                String small_bags = vehicles_object.getString("small_bags");
 
                                 JSONObject car_make_object = vehicles_object.getJSONObject("car_make");
                                 String make = car_make_object.getString("make");
@@ -170,6 +177,8 @@ public class Activity_Car extends AppCompatActivity {
                                 vehicleModel.setTransmission(transmission);
                                 vehicleModel.setBodyDesign(body_design);
                                 vehicleModel.setDriver_cost(driver_cost);
+                                vehicleModel.setLarge_bags(large_bags);
+                                vehicleModel.setSmall_bags(small_bags);
 
 
                                 if (vehicleModelList.contains(car_type_id)) {

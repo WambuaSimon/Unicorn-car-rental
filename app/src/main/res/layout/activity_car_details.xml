@@ -222,7 +222,7 @@
 
                         android:orientation="horizontal"
                         android:weightSum="1"
-                       android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -280,14 +280,15 @@
 
                         android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:weightSum="1"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                     <ImageView
-                            android:layout_weight="0.2"
+
                             android:tint="@color/icon_color"
                             android:src="@drawable/body"
+                            android:layout_marginStart="@dimen/_15sdp"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_30sdp"
                     />
@@ -295,21 +296,32 @@
                     <TextView
                             android:id="@+id/body"
                             android:padding="@dimen/_3sdp"
-                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_7sdp"
                             android:background="@drawable/rounded_feature"
-                            android:layout_weight="0.3"
                             android:textColor="@color/white"
                             android:text="CrossOver"
 
-                            android:layout_gravity="center"
-                            android:layout_width="0dp"
+
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                     />
 
+                </LinearLayout>
+
+                <LinearLayout
+
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_5sdp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
                     <ImageView
-                            android:layout_weight="0.2"
+                            android:layout_marginStart="@dimen/_15sdp"
                             android:tint="@color/icon_color"
-                            android:src="@drawable/body"
+                            android:src="@drawable/bag"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_30sdp"
                     />
@@ -319,16 +331,15 @@
                             android:padding="@dimen/_3sdp"
                             android:gravity="center"
                             android:background="@drawable/rounded_feature"
-                            android:layout_weight="0.3"
+
+                            android:layout_marginStart="@dimen/_7sdp"
                             android:textColor="@color/white"
                             android:text="Bags"
-
                             android:layout_gravity="center"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                     />
                 </LinearLayout>
-
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

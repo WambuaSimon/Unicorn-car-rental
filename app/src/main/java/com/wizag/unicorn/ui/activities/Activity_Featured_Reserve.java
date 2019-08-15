@@ -3,8 +3,10 @@ package com.wizag.unicorn.ui.activities;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -46,6 +48,12 @@ public class Activity_Featured_Reserve extends AppCompatActivity {
 
         initFeatured();
     }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+    }
+
 
     void initFeatured() {
 
@@ -110,37 +118,59 @@ public class Activity_Featured_Reserve extends AppCompatActivity {
         });
 
 
-        getLocation();
+        if (!isNetworkConnected()) {
+            Toasty.warning(getApplicationContext(), "Ensure you have internet connection", Toasty.LENGTH_SHORT, true).show();
+        } else {
+            getLocation();
+        }
+
+
+//        getLocation();
 
         featured_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (terms.isChecked()) {
-                    if (driver.isChecked()) {
-                        needDriver = "1";
-                    } else if (!driver.isChecked()) {
-                        needDriver = "0";
-                    }
 
+                if (featured_pick_up.getSelectedItem().toString() == null || featured_drop_off.getSelectedItem().toString() == null) {
 
-                    /*store stuff in shared prefs*/
-                    SharedPreferences.Editor editor = getSharedPreferences("search_car", MODE_PRIVATE).edit();
-                    editor.putString("pick_up_location", featured_pick_up.getSelectedItem().toString());
-                    editor.putString("drop_off_location", featured_drop_off.getSelectedItem().toString());
+                    Toasty.warning(getApplicationContext(), "Select Drop off and Pick up locations", Toasty.LENGTH_SHORT, true).show();
+                } else if (featured_pick_date.getText().toString().isEmpty() || featured_drop_date.getText().toString().isEmpty()) {
+                    Toasty.warning(getApplicationContext(), "Select respective dates", Toasty.LENGTH_SHORT, true).show();
 
-                    editor.putString("pick_up_date", featured_pick_date.getText().toString());
-                    editor.putString("drop_off_date", featured_drop_date.getText().toString());
+                } else if (featured_pick_time.getText().toString().isEmpty() || featured_drop_time.getText().toString().isEmpty()) {
+                    Toasty.warning(getApplicationContext(), "Select respective times", Toasty.LENGTH_SHORT, true).show();
 
-                    editor.putString("pick_up_time", featured_pick_time.getText().toString());
-                    editor.putString("drop_off_time", featured_drop_time.getText().toString());
-                    editor.apply();
-
-                    Intent intent = new Intent(getApplicationContext(), Activity_Payment.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    startActivity(intent);
                 } else {
-                    Toasty.warning(getApplicationContext(), "Ensure you agree to the terms to proceed", Toasty.LENGTH_SHORT, true).show();
+
+                    if (terms.isChecked()) {
+                        if (driver.isChecked()) {
+                            needDriver = "1";
+                        } else if (!driver.isChecked()) {
+                            needDriver = "0";
+                        }
+
+                        /*store stuff in shared prefs*/
+                        SharedPreferences.Editor editor = getSharedPreferences("search_car", MODE_PRIVATE).edit();
+                        editor.putString("pick_up_location", featured_pick_up.getSelectedItem().toString());
+                        editor.putString("drop_off_location", featured_drop_off.getSelectedItem().toString());
+
+                        editor.putString("pick_up_date", featured_pick_date.getText().toString());
+                        editor.putString("drop_off_date", featured_drop_date.getText().toString());
+
+                        editor.putString("pick_up_time", featured_pick_time.getText().toString());
+                        editor.putString("drop_off_time", featured_drop_time.getText().toString());
+                        editor.apply();
+
+                        Intent intent = new Intent(getApplicationContext(), Activity_Payment.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("dailyRate", daily_rate);
+                        intent.putExtra("driver_cost", driverCost);
+                        intent.putExtra("needDriver", needDriver);
+                        startActivity(intent);
+                    } else {
+                        Toasty.warning(getApplicationContext(), "Ensure you agree to the terms to proceed", Toasty.LENGTH_SHORT, true).show();
+
+                    }
 
                 }
             }

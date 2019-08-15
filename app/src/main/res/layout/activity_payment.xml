@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:aandroid="http://schemas.android.com/tools"
              android:id="@+id/flipper"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
@@ -9,12 +9,11 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_height="match_parent" android:layout_width="match_parent"
             android:fillViewport="true">
-
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:layout_width="match_parent"
-                      android:orientation="vertical"
-                      android:layout_height="wrap_content">
+        <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_height="wrap_content" android:layout_width="match_parent"
+                android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/my_toolbar"
@@ -37,206 +36,285 @@
 
             </androidx.appcompat.widget.Toolbar>
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:orientation="vertical"
-                          android:padding="@dimen/_7sdp"
-                          android:layout_height="wrap_content">
 
-                <TextView
-                        android:layout_marginTop="@dimen/_7sdp"
+            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                               xmlns:app="http://schemas.android.com/apk/res-auto"
+                                               android:id="@+id/card"
+                                               android:layout_alignParentBottom="true"
+                                               android:layout_centerHorizontal="true"
+                                               android:layout_width="match_parent"
+                                               android:layout_height="wrap_content"
+
+                                               android:layout_marginStart="@dimen/_5sdp"
+                                               android:layout_marginTop="@dimen/_5sdp"
+                                               android:layout_marginEnd="@dimen/_5sdp"
+                                               android:layout_marginBottom="@dimen/_7sdp"
+
+                                               app:cardElevation="@dimen/_10sdp">
+
+                <LinearLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_height="match_parent"
+
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Toyota Fielder"
-                        android:id="@+id/car_type"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_18sdp"/>
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:id="@+id/car_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Toyota Fielder"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:textColor="@android:color/black"
+                            android:textSize="25sp"/>
+
+                    <LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal">
 
 
-                <TextView
-                        android:layout_marginTop="@dimen/_7sdp"
+                        <ImageButton
+                                android:src="@drawable/location"
+                                android:background="@null"
+                                android:tint="@color/colorPrimaryDark"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"/>
+
+                        <TextView
+                                android:id="@+id/pick_up"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pick up location"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"/>
+
+
+                    </LinearLayout>
+
+                    <View
+                            android:layout_width="1dp"
+                            android:layout_marginStart="@dimen/_25sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@color/bookings_color"/>
+
+
+                    <LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal">
+
+
+                        <ImageButton
+                                android:src="@drawable/time"
+                                android:background="@null"
+
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"/>
+
+                        <TextView
+                                android:id="@+id/pick_date"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2019-08-12"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"/>
+
+
+                    </LinearLayout>
+
+                    <View
+                            android:layout_width="4dp"
+                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:layout_marginStart="@dimen/_25sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@color/bookings_color"/>
+
+                    <LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal">
+
+
+                        <ImageButton
+
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:src="@drawable/time"
+                                android:background="@null"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"/>
+
+                        <TextView
+                                android:id="@+id/drop_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="16:00:00"
+                                android:layout_gravity="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"/>
+
+
+                    </LinearLayout>
+                    <View
+                            android:layout_width="1dp"
+                            android:layout_marginStart="@dimen/_25sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@color/bookings_color"/>
+
+                    <LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal">
+
+
+                        <ImageButton
+                                android:src="@drawable/location"
+                                android:background="@null"
+                                android:tint="@color/colorPrimaryDark"
+                                aandroid:layout_marginTop="@dimen/_3sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"/>
+
+                        <TextView
+                                android:id="@+id/drop_off"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Drop off location"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                               xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                                               android:layout_alignParentBottom="true"
+                                               android:layout_centerHorizontal="true"
+                                               android:layout_width="match_parent"
+                                               android:layout_height="wrap_content"
+                                               android:layout_marginStart="@dimen/_5sdp"
+                                               android:layout_marginTop="@dimen/_15sdp"
+                                               android:layout_marginEnd="@dimen/_5sdp"
+                                               android:layout_marginBottom="@dimen/_7sdp"
+
+                                               app:cardElevation="@dimen/_10sdp">
+
+                <LinearLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pick-up Location"
-
-                        android:textSize="@dimen/_18sdp"/>
-
-                <TextView android:layout_width="match_parent"
-                          android:layout_weight="0.5"
-                          android:id="@+id/pick_up"
-                          android:layout_marginEnd="@dimen/_5sdp"
-                          android:padding="@dimen/_5sdp"
-                          android:textSize="18sp"
-                          android:textColor="@android:color/black"
-                          android:background="@drawable/edittext_background"
-                          android:layout_height="wrap_content"/>
-
-                <TextView
-                        android:layout_marginTop="@dimen/_7sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Drop-off Location"
-
-                        android:textSize="@dimen/_18sdp"/>
-
-                <TextView android:layout_width="match_parent"
-                          android:layout_weight="0.5"
-                          android:id="@+id/drop_off"
-                          android:layout_marginEnd="@dimen/_5sdp"
-                          android:padding="@dimen/_5sdp"
-                          android:textSize="18sp"
-                          android:textColor="@android:color/black"
-                          android:background="@drawable/edittext_background"
-                          android:layout_height="wrap_content"/>
+                        android:orientation="vertical">
 
 
-                <TextView
-                        android:layout_marginTop="@dimen/_7sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Pick up Date"
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:orientation="vertical"
+                                  android:id="@+id/driver"
+                                  android:layout_height="wrap_content">
 
-                        android:textSize="@dimen/_18sdp"/>
+                        <TextView
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Driver Cost"
 
-                <TextView android:layout_width="match_parent"
-                          android:id="@+id/pick_date"
-                          android:textSize="18sp"
-                          android:textColor="@android:color/black"
-                          android:padding="@dimen/_5sdp"
-                          android:background="@drawable/edittext_background"
-                          android:layout_height="wrap_content"/>
+                                android:textSize="@dimen/_18sdp"/>
 
+                        <TextView android:layout_width="match_parent"
+                                  android:id="@+id/driver_cost"
+                                  android:padding="@dimen/_5sdp"
+                                  android:textSize="18sp"
+                                  android:textColor="@android:color/black"
+                                  android:background="@drawable/edittext_background"
+                                  android:layout_height="wrap_content"/>
 
-                <!--<TextView-->
-                        <!--android:layout_marginTop="@dimen/_7sdp"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Pick up Time"-->
-                        <!--android:textSize="@dimen/_18sdp"/>-->
+                    </LinearLayout>
 
-                <!--<TextView android:layout_width="match_parent"-->
-                          <!--android:id="@+id/pick_time"-->
-                          <!--android:padding="@dimen/_5sdp"-->
-                          <!--android:textSize="18sp"-->
-                          <!--android:textColor="@android:color/black"-->
-                          <!--android:background="@drawable/edittext_background"-->
-                          <!--android:layout_height="wrap_content"/>-->
-
-
-                <TextView
-                        android:layout_marginTop="@dimen/_7sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Drop off Date"
-
-                        android:textSize="@dimen/_18sdp"/>
-
-                <TextView android:layout_width="match_parent"
-                          android:id="@+id/drop_date"
-                          android:padding="@dimen/_5sdp"
-                          android:textSize="18sp"
-                          android:textColor="@android:color/black"
-                          android:background="@drawable/edittext_background"
-                          android:layout_height="wrap_content"/>
-
-                <!--<TextView-->
-                        <!--android:layout_marginTop="@dimen/_7sdp"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="Drop off Time"-->
-
-                        <!--android:textSize="@dimen/_18sdp"/>-->
-
-                <!--<TextView android:layout_width="match_parent"-->
-                          <!--android:id="@+id/drop_time"-->
-                          <!--android:padding="@dimen/_5sdp"-->
-                          <!--android:textSize="18sp"-->
-                          <!--android:textColor="@android:color/black"-->
-                          <!--android:background="@drawable/edittext_background"-->
-                          <!--android:layout_height="wrap_content"/>-->
-
-
-                <LinearLayout android:layout_width="match_parent"
-                              android:orientation="vertical"
-                              android:id="@+id/driver"
-                              android:layout_height="wrap_content">
 
                     <TextView
                             android:layout_marginTop="@dimen/_7sdp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Driver Cost"
+                            android:text="Ride Cost"
 
                             android:textSize="@dimen/_18sdp"/>
 
                     <TextView android:layout_width="match_parent"
-                              android:id="@+id/driver_cost"
+                              android:id="@+id/ride_cost"
                               android:padding="@dimen/_5sdp"
                               android:textSize="18sp"
                               android:textColor="@android:color/black"
                               android:background="@drawable/edittext_background"
                               android:layout_height="wrap_content"/>
 
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:orientation="horizontal"
+                                  android:layout_marginTop="@dimen/_7sdp"
+                                  android:layout_height="wrap_content">
+
+
+                        <TextView android:layout_width="wrap_content"
+
+                                  android:padding="@dimen/_5sdp"
+                                  android:textSize="18sp"
+                                  android:text="Est. Total"
+                                  android:textColor="@android:color/black"
+                                  android:background="@drawable/edittext_background"
+                                  android:layout_height="wrap_content"/>
+
+                        <TextView android:layout_width="wrap_content"
+                                  android:id="@+id/est_total"
+                                  android:padding="@dimen/_5sdp"
+                                  android:textSize="18sp"
+                                  android:text="Ksh.3,000"
+                                  android:textColor="@android:color/black"
+                                  android:background="@drawable/edittext_background"
+                                  android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/billing_info"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:textAllCaps="false"
+                    android:padding="@dimen/_7sdp"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:background="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="View Billing Info"/>
 
 
-                <TextView
-                        android:layout_marginTop="@dimen/_7sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ride Cost"
-
-                        android:textSize="@dimen/_18sdp"/>
-
-                <TextView android:layout_width="match_parent"
-                          android:id="@+id/ride_cost"
-                          android:padding="@dimen/_5sdp"
-                          android:textSize="18sp"
-                          android:textColor="@android:color/black"
-                          android:background="@drawable/edittext_background"
-                          android:layout_height="wrap_content"/>
-
-                <LinearLayout android:layout_width="match_parent"
-                              android:orientation="horizontal"
-                              android:layout_marginTop="@dimen/_7sdp"
-                              android:layout_height="wrap_content">
-
-
-                    <TextView android:layout_width="wrap_content"
-
-                              android:padding="@dimen/_5sdp"
-                              android:textSize="18sp"
-                              android:text="Est. Total"
-                              android:textColor="@android:color/black"
-                              android:background="@drawable/edittext_background"
-                              android:layout_height="wrap_content"/>
-
-                    <TextView android:layout_width="wrap_content"
-                              android:id="@+id/est_total"
-                              android:padding="@dimen/_5sdp"
-                              android:textSize="18sp"
-                              android:text="Ksh.3,000"
-                              android:textColor="@android:color/black"
-                              android:background="@drawable/edittext_background"
-                              android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-                <com.google.android.material.button.MaterialButton
-                        android:id="@+id/billing_info"
-                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                        android:layout_width="match_parent"
-                        android:textAllCaps="false"
-                        android:padding="@dimen/_7sdp"
-                        android:background="@color/colorPrimaryDark"
-                        android:textSize="18sp"
-                        android:layout_marginTop="@dimen/_7sdp"
-                        android:textColor="@color/white"
-                        android:layout_height="wrap_content"
-                        android:text="View Billing Info"/>
-
-
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <include layout="@layout/billing_layout"></include>
 </ViewFlipper>
+
