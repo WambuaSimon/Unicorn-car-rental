@@ -16,6 +16,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.wizag.unicorn.R;
 import com.wizag.unicorn.adapter.CarAdapter;
 import com.wizag.unicorn.model.VehicleModel;
@@ -144,8 +146,6 @@ public class Activity_Car extends AppCompatActivity {
                                 JSONObject car_model_object = vehicles_object.getJSONObject("car_model");
                                 String model = car_model_object.getString("model");
 
-                                JSONArray pricings = vehicles_object.getJSONArray("pricings");
-
                                 JSONObject fuel_type_object = vehicles_object.getJSONObject("fuel_type");
                                 String fuel = fuel_type_object.getString("name");
 
@@ -155,18 +155,15 @@ public class Activity_Car extends AppCompatActivity {
                                 JSONObject car_body_design_object = vehicles_object.getJSONObject("car_body_design");
                                 String body_design = car_body_design_object.getString("body_design");
 
+                                JSONArray pricing_array = vehicles_object.getJSONArray("pricings");
+                                for (int m = 0; m < pricing_array.length(); m++) {
+                                    JSONObject pricing_object = pricing_array.getJSONObject(m);
 
-                                for (int m = 0; m < pricings.length(); m++) {
-                                    JSONObject pricings_object = pricings.getJSONObject(m);
-                                    price = pricings_object.getString("price");
-                                    pricing_rate_id = pricings_object.getString("pricing_rate_id");
+                                    String name = pricing_object.getString("name");
+                                    String limit_distance = pricing_object.getString("limit_distance");
 
-                                    if (pricing_rate_id.equalsIgnoreCase("1")) {
-                                        vehicleModel.setDailyPricing(price);
-                                    } else if (pricing_rate_id.equalsIgnoreCase("2")) {
-                                        vehicleModel.setWeeklyPricing(price);
-                                    }
-
+                                    JSONObject pivot = pricing_object.getJSONObject("pivot");
+                                     price = pivot.getString("price");
                                 }
 
 
@@ -179,6 +176,7 @@ public class Activity_Car extends AppCompatActivity {
                                 vehicleModel.setDriver_cost(driver_cost);
                                 vehicleModel.setLarge_bags(large_bags);
                                 vehicleModel.setSmall_bags(small_bags);
+                                vehicleModel.setDailyPricing(price);
 
 
                                 if (vehicleModelList.contains(car_type_id)) {

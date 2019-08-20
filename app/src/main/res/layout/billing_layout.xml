@@ -112,7 +112,7 @@
                       android:layout_height="wrap_content"/>
 
             <EditText android:layout_width="match_parent"
-                      android:id="@+id/pickup"
+                      android:id="@+id/address"
 
                       android:inputType="textCapSentences"
                       android:padding="@dimen/_5sdp"

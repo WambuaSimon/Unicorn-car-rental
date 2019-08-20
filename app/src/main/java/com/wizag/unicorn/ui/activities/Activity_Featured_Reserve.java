@@ -125,8 +125,6 @@ public class Activity_Featured_Reserve extends AppCompatActivity {
         }
 
 
-//        getLocation();
-
         featured_reservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

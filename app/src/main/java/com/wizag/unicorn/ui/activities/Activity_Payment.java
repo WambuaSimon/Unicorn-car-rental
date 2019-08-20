@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import com.wizag.unicorn.R;
+import com.wizag.unicorn.utils.SessionManager;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
+import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Activity_Payment extends AppCompatActivity implements View.OnClickListener {
@@ -22,7 +25,9 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
     LinearLayout driver;
 
     String driverCost, daily_rate, needDriver;
-    int est_cost;
+    double est_cost;
+    SessionManager sessionManager;
+    EditText fName, lName, email, phone, address, city, country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,29 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getUserDetails();
+        String fName_txt = user.get("fName");
+        String lName_txt = user.get("lName");
+        String email_txt = user.get("email");
+        String phone_txt = user.get("phone");
+
+
+        fName = findViewById(R.id.fName);
+        lName = findViewById(R.id.lName);
+        email = findViewById(R.id.email);
+        phone = findViewById(R.id.phone);
+        address = findViewById(R.id.address);
+        city = findViewById(R.id.city);
+        country = findViewById(R.id.country);
+
+        fName.setText(fName_txt);
+        lName.setText(lName_txt);
+        email.setText(email_txt);
+        phone.setText(phone_txt);
+      
+
 
         previous = findViewById(R.id.previous);
         make_pay = findViewById(R.id.make_pay);
@@ -71,7 +99,7 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
             driver.setVisibility(View.GONE);
         } else if (needDriver.equalsIgnoreCase("1")) {
             driver.setVisibility(View.VISIBLE);
-            driver_cost.setText("Ksh."+driverCost);
+            driver_cost.setText("Ksh." + driverCost);
         }
 
         ride_cost.setText("Ksh." + daily_rate);
@@ -110,16 +138,20 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
 
 
         /*check if driver available*/
-        if(needDriver.equalsIgnoreCase("1")){
+        if (needDriver.equalsIgnoreCase("1")) {
             /*calculate est cost*/
-            int duration_cost = Integer.parseInt(interval_days) * Integer.parseInt(daily_rate);
-            est_cost = duration_cost + Integer.parseInt(driverCost);
-            est_total.setText("Ksh." + est_cost);
+            double duration_cost = Double.parseDouble(interval_days) * Double.parseDouble(daily_rate);
 
-        }
-        else if(needDriver.equalsIgnoreCase("0")){
-            int duration_cost = Integer.parseInt(interval_days) * Integer.parseInt(daily_rate);
-            est_total.setText("Ksh." + duration_cost);
+            est_cost = duration_cost + Double.parseDouble(driverCost);
+            est_total.setText("Ksh " + NumberFormat.getNumberInstance(Locale.getDefault()).format(est_cost));
+
+//            est_total.setText("Ksh." + est_cost);
+
+        } else if (needDriver.equalsIgnoreCase("0")) {
+            double duration_cost = Double.parseDouble(interval_days) * Double.parseDouble(daily_rate);
+            est_total.setText("Ksh " + NumberFormat.getNumberInstance(Locale.getDefault()).format(duration_cost));
+
+//            est_total.setText("Ksh." + duration_cost);
         }
 
 

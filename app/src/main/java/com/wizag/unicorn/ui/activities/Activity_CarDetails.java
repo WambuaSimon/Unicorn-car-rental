@@ -11,6 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.wizag.unicorn.R;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Activity_CarDetails extends AppCompatActivity {
     TextView daily, car_name, body, transmission, fuel_type, car_image;
     String carName, carImage, bodyDesign, transmission_type, fuelType, dailyRate;
@@ -61,7 +64,10 @@ public class Activity_CarDetails extends AppCompatActivity {
 
         }
 
-        daily.setText("Ksh." + dailyRate);
+        double dailyRatetxt = Double.parseDouble(dailyRate);
+        daily.setText("Ksh " + NumberFormat.getNumberInstance(Locale.getDefault()).format(dailyRatetxt));
+
+//        daily.setText("Ksh." + dailyRate);
         car_name.setText(carName);
         body.setText(bodyDesign);
         transmission.setText(transmission_type);

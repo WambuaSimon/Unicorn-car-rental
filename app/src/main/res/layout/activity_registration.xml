@@ -39,8 +39,7 @@
                       android:layout_height="match_parent"
                       android:layout_marginStart="@dimen/_5sdp"
                       android:layout_marginEnd="@dimen/_5sdp"
-                      android:orientation="vertical"
-        >
+                      android:orientation="vertical">
 
 
 

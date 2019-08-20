@@ -90,6 +90,7 @@
                   android:gravity="center"
                   android:id="@+id/phone"
                   android:padding="@dimen/_7sdp"
+                  android:enabled="false"
                   android:textSize="18sp"
                   android:layout_marginTop="@dimen/_5sdp"
                   android:layout_gravity="center"
@@ -98,89 +99,6 @@
                   android:layout_height="wrap_content"/>
 
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:weightSum="1"-->
-        <!--android:layout_marginTop="@dimen/_15sdp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_height="wrap_content">-->
-
-        <!--<EditText-->
-        <!--android:id="@+id/edit_profile"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_weight="0.5"-->
-        <!--android:padding="@dimen/_5sdp"-->
-        <!--android:gravity="center"-->
-        <!--android:focusable="false"-->
-        <!--android:layout_margin="@dimen/_5sdp"-->
-        <!--android:background="@drawable/rounded_edittext"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Edit Profile"/>-->
-
-
-        <!--<EditText-->
-        <!--android:id="@+id/upload_docs"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:gravity="center"-->
-        <!--android:focusable="false"-->
-        <!--android:layout_weight="0.5"-->
-        <!--android:layout_margin="@dimen/_5sdp"-->
-        <!--android:padding="@dimen/_5sdp"-->
-        <!--android:layout_marginStart="@dimen/_5sdp"-->
-        <!--android:background="@drawable/rounded_edittext"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Upload Docs"/>-->
-
-
-        <!--</LinearLayout>-->
-
-
-        <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:weightSum="1"-->
-                <!--android:gravity="center"-->
-
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_height="wrap_content">-->
-
-            <!--<ImageButton-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_weight="0.1"-->
-                    <!--android:tint="@color/colorAccent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--app:srcCompat="@drawable/exit_drawable"-->
-                    <!--android:background="?attr/selectableItemBackgroundBorderless"/>-->
-
-            <!--<com.google.android.material.button.MaterialButton-->
-                    <!--android:id="@+id/logout"-->
-                    <!--style="@style/Widget.MaterialComponents.Button.TextButton"-->
-                    <!--android:layout_width="80dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Logout"/>-->
-
-        <!--</LinearLayout>-->
-
-
-
-
-        <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:orientation="vertical"-->
-                <!--android:layout_height="wrap_content">-->
-
-
-            <!--<include-->
-                    <!--android:layout_marginTop="@dimen/_30sdp"-->
-                    <!--android:id="@+id/docs_layout"-->
-                    <!--layout="@layout/docs_layout"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-            <!--/>-->
-
-        <!--</LinearLayout>-->
 
     </LinearLayout>
 

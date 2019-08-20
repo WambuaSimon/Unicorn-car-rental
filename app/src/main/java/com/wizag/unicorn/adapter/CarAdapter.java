@@ -13,7 +13,9 @@ import com.bumptech.glide.Glide;
 import com.wizag.unicorn.R;
 import com.wizag.unicorn.model.VehicleModel;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
 
@@ -68,11 +70,18 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.MyViewHolder> {
         TextView monthly_rate = holder.monthly_rate;
 
         car_name.setText(vehicleData.get(listPosition).getCarMake() + " " + vehicleData.get(listPosition).getCarModel());
-        daily_amount.setText("Ksh " +vehicleData.get(listPosition).getDailyPricing());
+
+        if (vehicleData.get(listPosition).getDailyPricing() != null) {
+
+
+            double dailyRate = Double.parseDouble(vehicleData.get(listPosition).getDailyPricing());
+            daily_amount.setText("Ksh " + NumberFormat.getNumberInstance(Locale.getDefault()).format(dailyRate));
+        }
+
         weekly_rate.setText(vehicleData.get(listPosition).getWeeklyPricing());
         monthly_rate.setText(vehicleData.get(listPosition).getMonthlyPricing());
 
-        Glide.with(context).load("https://unicorn.wizag.co.ke/cartypes/"+vehicleData.get(listPosition).getCarImage()).into(car_image);
+        Glide.with(context).load("https://unicorn.wizag.co.ke/cartypes/" + vehicleData.get(listPosition).getCarImage()).into(car_image);
 
         card.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,11 +1,14 @@
 package com.wizag.unicorn.ui.activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +21,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.wizag.unicorn.R;
 import com.wizag.unicorn.adapter.VehicleAdapter;
 import com.wizag.unicorn.model.VehicleModel;
 import com.wizag.unicorn.network.ApiClient;
 import com.wizag.unicorn.network.ApiInterface;
+import com.wizag.unicorn.utils.SessionManager;
+import es.dmoral.toasty.Toasty;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +45,8 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
     String vehicles_url = "https://unicorn.wizag.co.ke/api/get-vehicles";
     String price;
     String pricing_rate_id;
-
+    TextView empty_view;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +55,33 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
 
         initializeViews();
-        getVehiclesData();
+
+
+        if (!isNetworkConnected()) {
+            Toasty.warning(getApplicationContext(), "Ensure you have internet connection", Toasty.LENGTH_LONG).show();
+        } else {
+            getVehiclesData();
+
+        }
 
 
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+    }
+
+
     void initializeViews() {
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
+        sessionManager = new SessionManager(getApplicationContext());
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        empty_view = findViewById(R.id.empty_view);
         recyclerView = findViewById(R.id.vehicles_recyclerview);
         apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -110,6 +133,16 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
     }
 
+    void emptyView() {
+        if (vehicleModelList.isEmpty()) {
+            empty_view.setVisibility(View.VISIBLE);
+
+        } else {
+            empty_view.setVisibility(View.GONE);
+
+        }
+    }
+
     void getVehiclesData() {
         com.android.volley.RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         final ProgressDialog pDialog = new ProgressDialog(this);
@@ -125,71 +158,73 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                         try {
 
                             JSONObject jsonObject = new JSONObject(response);
+
                             JSONArray vehicles_array = jsonObject.getJSONArray("carTypes");
-                            for (int p = 0; p < vehicles_array.length(); p++) {
+                            if (vehicles_array != null) {
+                                for (int p = 0; p < vehicles_array.length(); p++) {
 
 
-                                JSONObject vehicles_object = vehicles_array.getJSONObject(p);
-                                VehicleModel vehicleModel = new VehicleModel();
-                                String driver_cost = vehicles_object.getString("driver_cost");
-                                String large_bags = vehicles_object.getString("large_bags");
-                                String small_bags = vehicles_object.getString("small_bags");
-                                String car_type_id = vehicles_object.getString("id");
+                                    JSONObject vehicles_object = vehicles_array.getJSONObject(p);
+                                    VehicleModel vehicleModel = new VehicleModel();
+                                    String driver_cost = vehicles_object.getString("driver_cost");
+                                    String large_bags = vehicles_object.getString("large_bags");
+                                    String small_bags = vehicles_object.getString("small_bags");
+                                    String car_type_id = vehicles_object.getString("id");
 //                                vehicleModelList.clear();
 
-                                JSONObject car_make_object = vehicles_object.getJSONObject("car_make");
-                                String make = car_make_object.getString("make");
+                                    JSONObject car_make_object = vehicles_object.getJSONObject("car_make");
+                                    String make = car_make_object.getString("make");
 
-                                JSONObject car_image_object = vehicles_object.getJSONObject("car_type_image");
-                                String image = car_image_object.getString("image");
+                                    JSONObject car_image_object = vehicles_object.getJSONObject("car_type_image");
+                                    String image = car_image_object.getString("image");
 
-                                JSONObject car_model_object = vehicles_object.getJSONObject("car_model");
-                                String model = car_model_object.getString("model");
+                                    JSONObject car_model_object = vehicles_object.getJSONObject("car_model");
+                                    String model = car_model_object.getString("model");
 
-                                JSONArray pricings = vehicles_object.getJSONArray("pricings");
+                                    JSONArray pricings = vehicles_object.getJSONArray("pricings");
 
-                                JSONObject fuel_type_object = vehicles_object.getJSONObject("fuel_type");
-                                String fuel = fuel_type_object.getString("name");
+                                    JSONObject fuel_type_object = vehicles_object.getJSONObject("fuel_type");
+                                    String fuel = fuel_type_object.getString("name");
 
-                                JSONObject transmission_object = vehicles_object.getJSONObject("transmission");
-                                String transmission = transmission_object.getString("name");
+                                    JSONObject transmission_object = vehicles_object.getJSONObject("transmission");
+                                    String transmission = transmission_object.getString("name");
 
-                                JSONObject car_body_design_object = vehicles_object.getJSONObject("car_body_design");
-                                String body_design = car_body_design_object.getString("body_design");
+                                    JSONObject car_body_design_object = vehicles_object.getJSONObject("car_body_design");
+                                    String body_design = car_body_design_object.getString("body_design");
 
 
-                                for (int m = 0; m < pricings.length(); m++) {
-                                    JSONObject pricings_object = pricings.getJSONObject(m);
-                                    price = pricings_object.getString("price");
-                                    pricing_rate_id = pricings_object.getString("pricing_rate_id");
+                                    JSONArray pricing_array = vehicles_object.getJSONArray("pricings");
+                                    for (int m = 0; m < pricing_array.length(); m++) {
+                                        JSONObject pricing_object = pricing_array.getJSONObject(m);
 
-                                    if (pricing_rate_id.equalsIgnoreCase("1")) {
-                                        vehicleModel.setDailyPricing(price);
-                                    } else if (pricing_rate_id.equalsIgnoreCase("2")) {
-                                        vehicleModel.setWeeklyPricing(price);
+                                        String name = pricing_object.getString("name");
+                                        String limit_distance = pricing_object.getString("limit_distance");
+
+                                        JSONObject pivot = pricing_object.getJSONObject("pivot");
+                                        price = pivot.getString("price");
                                     }
 
+                                    vehicleModel.setCarMake(make);
+                                    vehicleModel.setCarModel(model);
+                                    vehicleModel.setCarImage(image);
+                                    vehicleModel.setFuelType(fuel);
+                                    vehicleModel.setTransmission(transmission);
+                                    vehicleModel.setBodyDesign(body_design);
+                                    vehicleModel.setDriver_cost(driver_cost);
+                                    vehicleModel.setLarge_bags(large_bags);
+                                    vehicleModel.setSmall_bags(small_bags);
+                                    vehicleModel.setDailyPricing(price);
+
+                                    if (vehicleModelList.contains(car_type_id)) {
+                                        /*do nothing*/
+                                    } else {
+                                        vehicleModelList.add(vehicleModel);
+                                    }
+
+
                                 }
-
-
-                                vehicleModel.setCarMake(make);
-                                vehicleModel.setCarModel(model);
-                                vehicleModel.setCarImage(image);
-                                vehicleModel.setFuelType(fuel);
-                                vehicleModel.setTransmission(transmission);
-                                vehicleModel.setBodyDesign(body_design);
-                                vehicleModel.setDriver_cost(driver_cost);
-                                vehicleModel.setLarge_bags(large_bags);
-                                vehicleModel.setSmall_bags(small_bags);
-
-
-                                if (vehicleModelList.contains(car_type_id)) {
-                                    /*do nothing*/
-                                } else {
-                                    vehicleModelList.add(vehicleModel);
-                                }
-
-
+                            } else {
+                                emptyView();
                             }
 
 
@@ -198,7 +233,7 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                             e.getMessage();
                         }
                         vehicleAdapter.notifyDataSetChanged();
-
+                        emptyView();
                         //Toast.makeText(Activity_Show_Tasks.this, "", Toast.LENGTH_SHORT).show();
                     }
                 }, new com.android.volley.Response.ErrorListener() {
@@ -231,6 +266,36 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                return true;
+
+            case R.id.refresh:
+                getVehiclesData();
+                return true;
+
+
+            case R.id.logout:
+
+                MaterialDialog mDialog = new MaterialDialog.Builder(this)
+                        .setTitle("Logout?")
+                        .setMessage("Are you sure you want to Logout?")
+                        .setCancelable(false)
+                        .setPositiveButton("Logout!", new MaterialDialog.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // logout Operation
+                                sessionManager.logoutUser();
+                            }
+                        })
+                        .setNegativeButton("Not now", new MaterialDialog.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .build();
+
+                // Show Dialog
+                mDialog.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -8,18 +8,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.shreyaspatil.MaterialDialog.MaterialDialog;
+import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.wizag.unicorn.R;
 import com.wizag.unicorn.ui.activities.Activity_Car;
+import com.wizag.unicorn.ui.activities.MainActivity;
 import com.wizag.unicorn.utils.Constants;
 import com.wizag.unicorn.utils.MySingleton;
+import com.wizag.unicorn.utils.SessionManager;
 import es.dmoral.toasty.Toasty;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +43,7 @@ public class HomeFragment extends Fragment {
     ArrayList<String> Locations;
     EditText pick_date, drop_date;
     EditText pick_time, drop_time;
-
+SessionManager sessionManager;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -50,13 +54,20 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        setHasOptionsMenu(true);
         init();
         return view;
 
     }
 
     void init() {
+
+        Toolbar myToolbar = view.findViewById(R.id.toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(myToolbar);
+
         find_car = view.findViewById(R.id.find_car);
+        sessionManager = new SessionManager(getActivity());
 
         Locations = new ArrayList<>();
 
@@ -152,6 +163,47 @@ public class HomeFragment extends Fragment {
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_menu, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+
+
+            case R.id.logout:
+
+                MaterialDialog mDialog = new MaterialDialog.Builder(getActivity())
+                        .setTitle("Logout?")
+                        .setMessage("Are you sure you want to Logout?")
+                        .setCancelable(false)
+                        .setPositiveButton("Logout!", new MaterialDialog.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                // logout Operation
+                                sessionManager.logoutUser();
+                            }
+                        })
+                        .setNegativeButton("Not now", new MaterialDialog.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .build();
+
+                // Show Dialog
+                mDialog.show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void getLocation() {
