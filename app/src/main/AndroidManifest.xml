@@ -12,8 +12,9 @@
             android:roundIcon="@drawable/unicorn_logo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ui.activities.Activity_PayWebview">
+        </activity>
         <activity android:name=".ui.activities.Activity_Featured_Reserve">
-
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ui.activities.Activity_Featured_Vehicles"/>
@@ -59,7 +60,6 @@
                     android:value=".ui.activities.Activity_Car"/>
         </activity>
         <activity android:name=".ui.activities.Activity_Featured_Vehicles">
-
         </activity>
         <activity android:name=".ui.activities.Activity_Test">
         </activity>

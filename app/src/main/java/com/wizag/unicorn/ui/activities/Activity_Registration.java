@@ -48,7 +48,7 @@ public class Activity_Registration extends AppCompatActivity {
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
-        confirm_password = findViewById(R.id.confirm_password);
+        confirm_password = findViewById(R.id.password_edit_text);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +143,7 @@ public class Activity_Registration extends AppCompatActivity {
                 params.put("phone_number", phone.getText().toString());
                 params.put("email", email.getText().toString());
                 params.put("password", password.getText().toString());
+                params.put("password_confirmation", confirm_password.getText().toString());
                 return params;
             }
 

@@ -78,6 +78,6 @@ dependencies {
 
     /*joda time library*/
     implementation 'net.danlew:android.joda:2.10.2'
-
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
 
 }

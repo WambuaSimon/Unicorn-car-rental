@@ -231,14 +231,53 @@
 
                     <LinearLayout android:layout_width="match_parent"
                                   android:orientation="vertical"
-                                  android:id="@+id/driver"
                                   android:layout_height="wrap_content">
 
                         <TextView
                                 android:layout_marginTop="@dimen/_7sdp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Driver Cost"
+                                android:text="Number of Days"
+
+                                android:textSize="@dimen/_18sdp"/>
+
+                        <TextView android:layout_width="match_parent"
+                                  android:id="@+id/days"
+                                  android:padding="@dimen/_5sdp"
+                                  android:textSize="18sp"
+                                  android:textColor="@android:color/black"
+                                  android:background="@drawable/edittext_background"
+                                  android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:orientation="vertical"
+                                  android:id="@+id/driver"
+                                  android:layout_height="wrap_content">
+
+
+                        <TextView
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Daily Driver Cost"
+
+                                android:textSize="@dimen/_18sdp"/>
+
+                        <TextView android:layout_width="match_parent"
+                                  android:id="@+id/daily_driver_cost"
+                                  android:padding="@dimen/_5sdp"
+                                  android:textSize="18sp"
+                                  android:textColor="@android:color/black"
+                                  android:background="@drawable/edittext_background"
+                                  android:layout_height="wrap_content"/>
+
+                        <TextView
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Est. Total Driver Cost"
 
                                 android:textSize="@dimen/_18sdp"/>
 
@@ -252,12 +291,27 @@
 
                     </LinearLayout>
 
+                    <TextView
+                            android:layout_marginTop="@dimen/_7sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Daily Ride Cost"
+
+                            android:textSize="@dimen/_18sdp"/>
+
+                    <TextView android:layout_width="match_parent"
+                              android:id="@+id/daily_ride_cost"
+                              android:padding="@dimen/_5sdp"
+                              android:textSize="18sp"
+                              android:textColor="@android:color/black"
+                              android:background="@drawable/edittext_background"
+                              android:layout_height="wrap_content"/>
 
                     <TextView
                             android:layout_marginTop="@dimen/_7sdp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ride Cost"
+                            android:text="Est. Total Ride Cost"
 
                             android:textSize="@dimen/_18sdp"/>
 

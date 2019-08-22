@@ -68,7 +68,7 @@
                         android:gravity="center"
                         android:background="@color/colorAccent"
                         android:textColor="@color/white"
-                        android:text="Limited Mileage to 250km:"
+                        android:text="Limited Mileage to 200km:"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                 />

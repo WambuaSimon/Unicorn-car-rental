@@ -28,6 +28,7 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
     double est_cost;
     SessionManager sessionManager;
     EditText fName, lName, email, phone, address, city, country;
+    TextView days, daily_ride_cost, daily_driver_cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,6 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
         lName.setText(lName_txt);
         email.setText(email_txt);
         phone.setText(phone_txt);
-      
 
 
         previous = findViewById(R.id.previous);
@@ -82,6 +82,10 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
         est_total = findViewById(R.id.est_total);
         ride_cost = findViewById(R.id.ride_cost);
 
+        days = findViewById(R.id.days);
+        daily_driver_cost = findViewById(R.id.daily_driver_cost);
+        daily_ride_cost = findViewById(R.id.daily_ride_cost);
+
         driver = findViewById(R.id.driver);
         driver.setVisibility(View.GONE);
 
@@ -99,10 +103,8 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
             driver.setVisibility(View.GONE);
         } else if (needDriver.equalsIgnoreCase("1")) {
             driver.setVisibility(View.VISIBLE);
-            driver_cost.setText("Ksh." + driverCost);
-        }
 
-        ride_cost.setText("Ksh." + daily_rate);
+        }
 
 
         previous.setOnClickListener(new View.OnClickListener() {
@@ -136,20 +138,37 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
             interval_days = "1";
         }
 
+        days.setText(interval_days);
 
         /*check if driver available*/
         if (needDriver.equalsIgnoreCase("1")) {
             /*calculate est cost*/
             double duration_cost = Double.parseDouble(interval_days) * Double.parseDouble(daily_rate);
 
-            est_cost = duration_cost + Double.parseDouble(driverCost);
+            driver_cost.setText("Ksh." + Double.parseDouble(driverCost) * Double.parseDouble(interval_days));
+            ride_cost.setText("Ksh." + duration_cost);
+
+            /*daily driver  and ride cost*/
+            daily_driver_cost.setText("Ksh." + Double.parseDouble(driverCost));
+            daily_ride_cost.setText("Ksh." +  Double.parseDouble(daily_rate));
+
+            est_cost = (Double.parseDouble(driverCost) * Double.parseDouble(interval_days)) + duration_cost;
+
+//            est_cost = Double.parseDouble(driver_cost.getText().toString()) + Double.parseDouble(ride_cost.getText().toString());
             est_total.setText("Ksh " + NumberFormat.getNumberInstance(Locale.getDefault()).format(est_cost));
+
 
 //            est_total.setText("Ksh." + est_cost);
 
         } else if (needDriver.equalsIgnoreCase("0")) {
             double duration_cost = Double.parseDouble(interval_days) * Double.parseDouble(daily_rate);
             est_total.setText("Ksh " + NumberFormat.getNumberInstance(Locale.getDefault()).format(duration_cost));
+
+            ride_cost.setText("Ksh." + duration_cost);
+            /*daily driver and ride cost*/
+            daily_driver_cost.setText("Ksh." + Double.parseDouble(driverCost));
+            daily_ride_cost.setText("Ksh." +  Double.parseDouble(daily_rate));
+
 
 //            est_total.setText("Ksh." + duration_cost);
         }
@@ -161,6 +180,21 @@ public class Activity_Payment extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.make_pay:
+                if (address.getText().toString().isEmpty()) {
+                    address.setError("Enter Your Address");
+                } else if (city.getText().toString().isEmpty()) {
+                    city.setError("Enter Your City");
+                } else if (country.getText().toString().isEmpty()) {
+                    country.setError("Enter Your Country");
+                } else {
+
+//                    /*open webView for payment*/
+//                    Intent intent = new Intent(getApplicationContext(), Activity_PayWebview.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+
+                }
+
                 break;
 
             case R.id.billing_info:

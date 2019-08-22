@@ -68,7 +68,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.MyView
         final CardView card = holder.card;
 
 
-        car.setText(bookingsModels.get(listPosition).getCar());
+        car.setText(bookingsModels.get(listPosition).getMake() +" " +bookingsModels.get(listPosition).getModel());
         pick_up_date.setText(bookingsModels.get(listPosition).getPickup_date());
         pick_up_time.setText(bookingsModels.get(listPosition).getPickup_time());
         drop_off_date.setText(bookingsModels.get(listPosition).getDropoff_date());

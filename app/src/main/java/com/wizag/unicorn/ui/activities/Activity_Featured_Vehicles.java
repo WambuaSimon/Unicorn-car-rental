@@ -78,8 +78,6 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         sessionManager = new SessionManager(getApplicationContext());
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         empty_view = findViewById(R.id.empty_view);
         recyclerView = findViewById(R.id.vehicles_recyclerview);
@@ -108,7 +106,6 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
 
 
                 Intent intent = new Intent(getApplicationContext(), Activity_CarDetails.class);
-
                 intent.putExtra("carImage", carImage);
                 intent.putExtra("carName", car_name);
                 intent.putExtra("dailyPricing", dailyPricing);
@@ -120,7 +117,6 @@ public class Activity_Featured_Vehicles extends AppCompatActivity {
                 intent.putExtra("driver_cost", driver_cost);
                 intent.putExtra("large_bags", large_bags);
                 intent.putExtra("small_bags", small_bags);
-
 
                 intent.putExtra("parentName", "featured");
                 startActivity(intent);

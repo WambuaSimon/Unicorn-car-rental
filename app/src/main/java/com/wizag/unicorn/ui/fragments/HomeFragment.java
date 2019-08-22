@@ -43,7 +43,10 @@ public class HomeFragment extends Fragment {
     ArrayList<String> Locations;
     EditText pick_date, drop_date;
     EditText pick_time, drop_time;
-SessionManager sessionManager;
+    SessionManager sessionManager;
+    JSONArray locations;
+    int id_pickup,id_dropoff;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -73,6 +76,47 @@ SessionManager sessionManager;
 
         pick_up = view.findViewById(R.id.pick_up);
         drop_off = view.findViewById(R.id.drop_off);
+
+        pick_up.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    JSONObject dataClicked = locations.getJSONObject(position);
+                    id_pickup = dataClicked.getInt("id");
+//                    Toast.makeText(getActivity(), ""+id_pickup, Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+//                    Toast.makeText(getApplicationContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        drop_off.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    JSONObject dataClicked = locations.getJSONObject(position);
+                    id_dropoff = dataClicked.getInt("id");
+//                    Toast.makeText(getActivity(), ""+id_dropoff, Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+//                    Toast.makeText(getApplicationContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         pick_date = view.findViewById(R.id.pick_date);
         drop_date = view.findViewById(R.id.drop_date);
@@ -123,19 +167,16 @@ SessionManager sessionManager;
             public void onClick(View v) {
 
                 /*validation*/
-                if(pick_up.getSelectedItem().toString() == null || drop_off.getSelectedItem().toString() ==null){
+                if (pick_up.getSelectedItem().toString() == null || drop_off.getSelectedItem().toString() == null) {
 
-                    Toasty.warning(getActivity(),"Select Drop off and Pick up locations",Toasty.LENGTH_SHORT,true).show();
-                }
-                else if(pick_date.getText().toString().isEmpty() || drop_date.getText().toString().isEmpty() ){
-                    Toasty.warning(getActivity(),"Select respective dates",Toasty.LENGTH_SHORT,true).show();
+                    Toasty.warning(getActivity(), "Select Drop off and Pick up locations", Toasty.LENGTH_SHORT, true).show();
+                } else if (pick_date.getText().toString().isEmpty() || drop_date.getText().toString().isEmpty()) {
+                    Toasty.warning(getActivity(), "Select respective dates", Toasty.LENGTH_SHORT, true).show();
 
-                }
+                } else if (pick_time.getText().toString().isEmpty() || drop_time.getText().toString().isEmpty()) {
+                    Toasty.warning(getActivity(), "Select respective times", Toasty.LENGTH_SHORT, true).show();
 
-                else if(pick_time.getText().toString().isEmpty() || drop_time.getText().toString().isEmpty() ){
-                    Toasty.warning(getActivity(),"Select respective times",Toasty.LENGTH_SHORT,true).show();
-
-                }else {
+                } else {
 
                     /*store stuff in shared prefs*/
                     SharedPreferences.Editor editor = getActivity().getSharedPreferences("search_car", MODE_PRIVATE).edit();
@@ -147,12 +188,17 @@ SessionManager sessionManager;
 
                     editor.putString("pick_up_time", pick_time.getText().toString());
                     editor.putString("drop_off_time", drop_time.getText().toString());
+
+                    editor.putInt("id_pickup", id_pickup);
+                    editor.putInt("id_dropoff", id_dropoff);
+
+
                     editor.apply();
 
                     Intent intent = new Intent(view.getContext(), Activity_Car.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                    intent.putExtra("parentName","search");
+                    intent.putExtra("parentName", "search");
                     startActivity(intent);
 
                 }
@@ -168,7 +214,7 @@ SessionManager sessionManager;
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.home_menu, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -220,7 +266,7 @@ SessionManager sessionManager;
                     JSONObject jsonObject = new JSONObject(response);
                     pDialog.dismiss();
                     if (jsonObject != null) {
-                        JSONArray locations = jsonObject.getJSONArray("locations");
+                         locations = jsonObject.getJSONArray("locations");
                         for (int i = 0; i < locations.length(); i++) {
                             JSONObject locationsObject = locations.getJSONObject(i);
                             String name = locationsObject.getString("name");
@@ -265,8 +311,12 @@ SessionManager sessionManager;
 
 
     }
+    public String checkDigit(int number) {
+        return number <= 9 ? "0" + number : String.valueOf(number);
+    }
 
-     void getPickUpDate() {
+
+    void getPickUpDate() {
         final Calendar mcurrentDate = Calendar.getInstance();
 
         mcurrentDate.set(mcurrentDate.get(Calendar.YEAR), mcurrentDate.get(Calendar.MONTH), mcurrentDate.get(Calendar.DAY_OF_MONTH) + 2,
@@ -294,7 +344,7 @@ SessionManager sessionManager;
     }
 
 
-     void getDropOffDate() {
+    void getDropOffDate() {
         final Calendar mcurrentDate = Calendar.getInstance();
 
         mcurrentDate.set(mcurrentDate.get(Calendar.YEAR), mcurrentDate.get(Calendar.MONTH), mcurrentDate.get(Calendar.DAY_OF_MONTH) + 2,
@@ -321,7 +371,7 @@ SessionManager sessionManager;
     }
 
 
-     void getPickupTime() {
+    void getPickupTime() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -330,7 +380,10 @@ SessionManager sessionManager;
         mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                pick_time.setText(selectedHour + ":" + selectedMinute);
+                pick_time.setText( "" + checkDigit(selectedHour) + ":" + checkDigit(selectedMinute));
+
+
+//                pick_time.setText(selectedHour + ":" + selectedMinute);
             }
         }, hour, minute, true);
         mTimePicker.setTitle("Select Time");
@@ -338,7 +391,7 @@ SessionManager sessionManager;
     }
 
 
-     void getDropOffTime() {
+    void getDropOffTime() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -347,7 +400,9 @@ SessionManager sessionManager;
         mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                drop_time.setText(selectedHour + ":" + selectedMinute);
+                drop_time.setText( "" + checkDigit(selectedHour) + ":" + checkDigit(selectedMinute));
+
+//                drop_time.setText(selectedHour + ":" + selectedMinute);
             }
         }, hour, minute, true);
         mTimePicker.setTitle("Select Time");
